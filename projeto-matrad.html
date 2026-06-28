@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiDRoSIS | Portfólio Marco António Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Início</a>
+        </div>
+    </nav>
+
+    <!-- HEADER DO PROJETO -->
+   <header class="bg-white border-b border-slate-200 py-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">Radioterapia</span>
+                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full">MATLAB</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Integração PET no matRad</h1>
+            <p class="text-xl text-slate-600 mb-8">Análise de Imagens PET para Heterogeneidade Tumoral na Terapia com Protões</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="prose prose-slate prose-lg max-w-none">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">O Desafio Clínico</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Desenvolvido no âmbito da disciplina de Diagnóstico e Terapia com Radiação e Protões, este projeto focou-se em expandir as capacidades do matRad (um sistema open-source de planeamento de tratamentos de radioterapia).
+            </p>
+            
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">Implementação</h2>
+            <ul class="list-disc pl-6 text-slate-700 mb-8 space-y-2">
+                <li><strong>Importação e Exportação:</strong> Adicionada a funcionalidade para o matRad ler e processar dados de Tomografia por Emissão de Positrões (PET), especificamente formatos <code>.pt</code> e <code>.pst</code>.</li>
+                <li><strong>Heterogeneidade Tumoral:</strong> Implementação de algoritmos para análise avançada de imagens PET, baseando a extração de dados em modelos matemáticos e biológicos validados na literatura científica atual.</li>
+                <li>Otimização da visualização de zonas de alta atividade metabólica para auxiliar o planeamento de doses na terapia por feixe de protões.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-400 mt-12">
+        <p>&copy; 2026 Marco António Ferreira. Projeto distribuído sob a Licença MIT.</p>
+    </footer>
+</body>
+</html>
