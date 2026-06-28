@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futebol e a Inflação de Zeros | CEAUL - Marco Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800 sticky top-0">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-amber-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+        </div>
+    </nav>
+
+    <!-- HEADER DO PROJETO -->
+    <header class="bg-white border-b border-slate-200 py-16 px-6 relative overflow-hidden">
+        <!-- Padrão de fundo discreto -->
+        <div class="absolute inset-0 opacity-5" style="background-image: radial-gradient(#d97706 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10">
+            <div class="flex flex-wrap items-center gap-3 mb-4">
+                <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full"><i class="fas fa-chart-line mr-1"></i> Data Science</span>
+                <span class="bg-slate-100 text-slate-800 text-xs font-bold px-3 py-1 rounded-full">R & footBayes</span>
+                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">CEAUL - FCUL</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">Futebol e a Inflação de Zeros</h1>
+            <p class="text-xl text-slate-600 mb-6 font-light">Metodologia Inferencial Bayesiana aplicada à previsão de resultados da 1ª Liga Portuguesa de Futebol (Masculina e Feminina).</p>
+            
+            <div class="bg-slate-50 border-l-4 border-amber-500 p-4 rounded-r-lg italic text-slate-600 text-sm">
+                "Decidi participar no programa Estágios de Verão do CEAUL - Sê Investigador 2024 para explorar novas oportunidades de aprendizagem e desenvolvimento pessoal, e para me desafiar num ambiente de investigação estimulante." — Marco Ferreira
+            </div>
+        </div>
+    </header>
+
+    <!-- CORPO DO PROJETO -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="prose prose-slate prose-lg max-w-none">
+            
+            <!-- SECÇÃO 1: OBJETIVOS -->
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2 flex items-center"><i class="fas fa-bullseye text-amber-500 mr-3"></i> Objetivos do Projeto</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Este estágio de investigação teve como foco a modelação do desempenho das 18 equipas participantes na 1ª Liga Portuguesa de Futebol, abordando o fenómeno estatístico da elevada frequência de zero golos em partidas desportivas. Os principais objetivos delineados foram:
+            </p>
+            <ul class="list-disc pl-6 text-slate-700 mb-10 space-y-2">
+                <li>Prever o número de golos marcados por cada equipa interveniente num jogo.</li>
+                <li>Prever o resultado do jogo (vitória, empate ou derrota).</li>
+                <li>Analisar comparativamente os Campeonatos Nacionais da 1ª Divisão Masculina e Feminina.</li>
+                <li>Adquirir competências de inferência estatística Bayesiana e proficiência na linguagem de programação <strong>R</strong>.</li>
+            </ul>
+
+            <!-- SECÇÃO 2: METODOLOGIA E DADOS -->
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2 flex items-center"><i class="fas fa-database text-amber-500 mr-3"></i> Metodologia & Dados</h2>
+            <p class="text-slate-700 leading-relaxed mb-4">
+                O tratamento estatístico foi realizado recorrendo ao <strong>R-Studio (C-RAN)</strong>. Utilizou-se o pacote <code>footBayes</code> juntamente com bibliotecas essenciais para manipulação e visualização de dados como <code>tidyverse</code>, <code>dplyr</code>, <code>readr</code> e <code>bayesplot</code>.
+            </p>
+            <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-10">
+                <h4 class="font-bold text-slate-800 mb-3">Datasets (Época 2023):</h4>
+                <ul class="space-y-3 text-sm text-slate-600">
+                    <li><i class="fas fa-male w-5 text-center text-slate-400"></i> <strong>Masculino:</strong> 306 Jogos compilados a partir do <em>football.data.co.uk</em>.</li>
+                    <li><i class="fas fa-female w-5 text-center text-slate-400"></i> <strong>Feminino:</strong> 264 Jogos compilados manualmente através do portal <em>ZeroZero</em>.</li>
+                </ul>
+                <p class="text-sm text-slate-500 mt-4">Variáveis extraídas: <code>$season</code>, <code>$home_team</code>, <code>$away_team</code>, <code>$home_goals</code>, <code>$away_goals</code>.</p>
+            </div>
+
+            <!-- SECÇÃO 3: MODELAÇÃO E INFERÊNCIA -->
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2 flex items-center"><i class="fas fa-chart-area text-amber-500 mr-3"></i> Modelação: Zero-inflated Skellam</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Para lidar com o excesso de zeros típico nos resultados de futebol, ajustou-se um modelo <strong>Zero-inflated Skellam</strong> através de uma abordagem Bayesiana (recorrendo à função <code>stan_foot</code> do ecossistema <em>rstan</em>). O processo iterativo de <em>Hamiltonian Monte Carlo (HMC)</em> foi configurado para 4000 iterações distribuídas em duas cadeias.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2 text-sm uppercase tracking-wide">Habilidades Específicas</h4>
+                    <p class="text-sm text-slate-600">Extração do rácio de habilidades Atacantes (vermelho) vs Defensivas (azul) para cada equipa (<code>sigma_att</code> e <code>sigma_def</code>). As equipas melhor classificadas evidenciaram empiricamente o melhor balanço ataque-defesa.</p>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2 text-sm uppercase tracking-wide">Vantagem de Casa (Home Advantage)</h4>
+                    <p class="text-sm text-slate-600">A análise inicial das curvas de densidade confirmou a vantagem de jogar em casa (<code>home</code> parameter), sendo esta tendência mais acentuada no futebol masculino face ao feminino (onde há maior polarização das equipas dominantes).</p>
+                </div>
+            </div>
+
+            <!-- SECÇÃO 4: MODEL CHECKING -->
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2 flex items-center"><i class="fas fa-check-double text-amber-500 mr-3"></i> Verificação e Previsões</h2>
+            <p class="text-slate-700 leading-relaxed mb-4">
+                A robustez do modelo foi testada rigorosamente através de <strong>Posterior Predictive Checks (PPC)</strong>.
+            </p>
+            <ul class="list-disc pl-6 text-slate-700 mb-8 space-y-2">
+                <li><strong>Validação de Ajuste:</strong> A avaliação das diferenças de golos (agregadas e ordenadas por jogo) comprovou o bom <em>fitting</em> do modelo aos dados reais (função <code>pp_foot</code>).</li>
+                <li><strong>Cálculo de Probabilidades (Out-of-sample):</strong> Simulação de resultados para as 34 jornadas gerando matrizes de probabilidades de vitória (<code>foot_round_robin</code> e <code>foot_prob</code>).</li>
+                <li><strong>Reconstrução das Classificações Finais:</strong> Simulação preditiva da pontuação acumulada das equipas ao longo da época (função <code>foot_rank</code>).</li>
+            </ul>
+
+            <!-- SECÇÃO 5: CONCLUSÃO -->
+            <div class="bg-slate-900 text-white rounded-xl p-8 shadow-lg mt-12" data-aos="zoom-in">
+                <h2 class="text-2xl font-bold text-amber-400 mb-4"><i class="fas fa-flag-checkered mr-2"></i> Conclusão e Resultados</h2>
+                <p class="text-slate-300 leading-relaxed mb-4">
+                    O projeto teve um desfecho extremamente positivo, evidenciando o sucesso do modelo probabilístico estatístico na análise desportiva. 
+                </p>
+                <p class="text-slate-300 leading-relaxed">
+                    O modelo capturou de forma eficaz as características dos dados e previu com sucesso o <strong>Sporting CP</strong> como campeão da Liga Masculina e o <strong>SL Benfica</strong> como campeão da Liga Feminina, alinhando as distribuições preditivas do modelo com os dados do mundo real. O trabalho demonstrou que as técnicas Bayesianas oferecem uma representação precisa e altamente útil para previsões e avaliações de risco no contexto do futebol.
+                </p>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-400 mt-12 border-t border-slate-800">
+        <p>&copy; 2026 Marco Ferreira. Trabalho realizado no Centro de Estatística e Aplicações da Universidade de Lisboa (CEAUL).</p>
+    </footer>
+
+    <!-- Scripts para animações -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+    </script>
+</body>
+</html>
