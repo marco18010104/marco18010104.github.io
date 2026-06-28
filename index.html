@@ -1,117 +1,143 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio | Teu Nome Completo</title>
+    <title>Marco | Portfólio Engenharia Biomédica</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        /* Pequeno ajuste para garantir que a barra de navegação não sobrepõe os títulos */
+        section { scroll-margin-top: 100px; }
+    </style>
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
 
-    <header class="bg-gradient-to-r from-slate-900 to-teal-950 text-white py-20 px-6 text-center shadow-md">
-        <div class="max-w-4xl mx-auto">
-            <div class="w-32 h-32 bg-teal-600 rounded-full mx-auto mb-6 border-4 border-teal-400 flex items-center justify-center text-3xl font-bold">
-                TN </div>
-            <h1 class="text-4xl font-extrabold tracking-tight sm:text-5xl">Teu Nome Completo</h1>
-            <p class="mt-4 text-xl text-teal-300 font-medium">Mestrando em Engenharia Biomédica e Biofísica</p>
-            <p class="text-slate-400 text-sm mt-1">Faculdade de Ciências da Universidade de Lisboa (FCUL)</p>
+    <nav class="fixed w-full bg-slate-900/90 backdrop-blur-md text-white z-50 border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="font-bold text-teal-400 tracking-wider">MARCO.</span>
+            <div class="space-x-6 text-sm font-medium hidden sm:block">
+                <a href="#sobre" class="hover:text-teal-400 transition-colors">Sobre</a>
+                <a href="#projetos" class="hover:text-teal-400 transition-colors">Projetos</a>
+                <a href="#cv" class="hover:text-teal-400 transition-colors">CV</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-br from-slate-900 via-teal-950 to-slate-900 text-white pt-32 pb-20 px-6 text-center shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10" data-aos="zoom-in" data-aos-duration="1000">
+            <div class="w-36 h-36 bg-teal-600 rounded-full mx-auto mb-6 border-4 border-teal-400 shadow-xl flex items-center justify-center text-5xl font-bold transition-transform hover:scale-105 duration-300 cursor-default">
+                M
+            </div>
             
-            <div class="mt-8 flex flex-wrap justify-center gap-4">
-                <a href="LINK_DO_TEU_LINKEDIN" target="_blank" class="bg-teal-600 hover:bg-teal-500 text-white px-5 py-2.5 rounded-lg font-semibold text-sm shadow transition"><i class="fab fa-linkedin mr-2"></i>LinkedIn</a>
-                <a href="LINK_DO_TEU_ORCID" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm shadow border border-slate-700 transition"><i class="fas fa-graduation-cap mr-2"></i>ORCID</a>
-                <a href="LINK_DO_TEU_GITHUB" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm shadow border border-slate-700 transition"><i class="fab fa-github mr-2"></i>GitHub</a>
-                <a href="mailto:teu.email@alunos.fc.ul.pt" class="bg-slate-800 hover:bg-slate-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm shadow border border-slate-700 transition"><i class="fas fa-envelope mr-2"></i>Email</a>
+            <h1 class="text-4xl font-extrabold tracking-tight sm:text-6xl mb-4">Marco [Teu Apelido]</h1>
+            <p class="text-xl text-teal-300 font-medium">Mestrando em Engenharia Biomédica e Biofísica</p>
+            <p class="text-slate-400 text-sm mt-2"><i class="fas fa-map-marker-alt mr-1"></i> FCUL - Universidade de Lisboa</p>
+            
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <a href="LINK_DO_TEU_LINKEDIN" target="_blank" class="group bg-teal-600 hover:bg-teal-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-teal-500/30">
+                    <i class="fab fa-linkedin mr-2 group-hover:animate-bounce"></i>LinkedIn
+                </a>
+                <a href="LINK_DO_TEU_GITHUB" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-full font-semibold shadow-lg border border-slate-700 transition-all duration-300 hover:-translate-y-1">
+                    <i class="fab fa-github mr-2"></i>GitHub
+                </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-12">
+    <main class="max-w-5xl mx-auto px-6 py-16">
         
-        <section class="mb-16">
-            <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-3 mb-6">Sobre Mim & Interesses de Investigação</h2>
-            <div class="bg-white p-6 rounded-xl shadow-xs border border-slate-200">
-                <p class="text-slate-600 leading-relaxed">
-                    Escreve aqui um parágrafo dinâmico. Exemplo: Sou estudante de Mestrado em Engenharia Biomédica e Biofísica na FCUL, focado no desenvolvimento de soluções tecnológicas para a saúde. Tenho particular interesse no processamento de sinais biológicos, inteligência artificial aplicada à imagiologia médica e no desenvolvimento de instrumentação biomédica. Procuro aplicar competências de programação e engenharia para resolver problemas clínicos reais.
+        <section id="sobre" class="mb-24" data-aos="fade-up">
+            <div class="flex items-center mb-8">
+                <div class="w-8 h-1 bg-teal-500 mr-4 rounded-full"></div>
+                <h2 class="text-3xl font-bold text-slate-900">Sobre Mim</h2>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 transition-shadow hover:shadow-md duration-300">
+                <p class="text-slate-600 leading-relaxed text-lg mb-6">
+                    [Escreve aqui o teu texto]. Sou estudante de Mestrado em Engenharia Biomédica e Biofísica na FCUL, apaixonado por unir a tecnologia à saúde. O meu foco reside no processamento de sinais, desenvolvimento de dispositivos médicos e aplicação de Inteligência Artificial para melhorar o diagnóstico e a qualidade de vida.
                 </p>
-                <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-                    <div class="p-3 bg-slate-100 rounded-lg text-sm font-semibold text-slate-700">Imagiologia Médica (RM, CT)</div>
-                    <div class="p-3 bg-slate-100 rounded-lg text-sm font-semibold text-slate-700">Processamento de Sinal (EEG, ECG)</div>
-                    <div class="p-3 bg-slate-100 rounded-lg text-sm font-semibold text-slate-700">Machine Learning & Python</div>
+                <div class="flex flex-wrap gap-3">
+                    <span class="px-4 py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-semibold border border-teal-100 transition-transform hover:scale-105 cursor-default">Python & MATLAB</span>
+                    <span class="px-4 py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-semibold border border-teal-100 transition-transform hover:scale-105 cursor-default">Processamento de Sinal</span>
+                    <span class="px-4 py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-semibold border border-teal-100 transition-transform hover:scale-105 cursor-default">Machine Learning</span>
+                    <span class="px-4 py-2 bg-teal-50 text-teal-700 rounded-lg text-sm font-semibold border border-teal-100 transition-transform hover:scale-105 cursor-default">Instrumentação Médica</span>
                 </div>
             </div>
         </section>
 
-        <section class="mb-16">
-            <h2 class="text-2xl font-bold text-slate-900 border-l-4 border-teal-500 pl-3 mb-6">Projetos & Trabalhos Académicos</h2>
-            <p class="text-slate-500 text-sm mb-6">Uma seleção dos trabalhos mais relevantes desenvolvidos durante o meu percurso na FCUL.</p>
+        <section id="projetos" class="mb-24">
+            <div class="flex items-center mb-8" data-aos="fade-right">
+                <div class="w-8 h-1 bg-teal-500 mr-4 rounded-full"></div>
+                <h2 class="text-3xl font-bold text-slate-900">Projetos em Destaque</h2>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <div class="bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden flex flex-col justify-between">
-                    <div class="p-6">
-                        <span class="bg-teal-100 text-teal-800 text-xs font-bold px-2.5 py-1 rounded">Processamento de Sinal / Imagem</span>
-                        <h3 class="text-lg font-bold text-slate-900 mt-3">Filtragem e Deteção de Picos R em Sinais de ECG</h3>
-                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">Desenvolvimento de um algoritmo para remoção de ruído de alta frequência e desvio de linha de base em sinais de ECG, com posterior extração da frequência cardíaca.</p>
-                        <p class="text-slate-400 text-xs font-mono mt-4">Tecnologias: MATLAB / Python (SciPy)</p>
+                <div class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full">Sinal / Python</span>
+                            <i class="fas fa-heartbeat text-slate-300 text-2xl group-hover:text-teal-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-teal-600 transition-colors">Análise de ECG com Deep Learning</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Desenvolvimento de uma rede neuronal para classificação de arritmias a partir de sinais de eletrocardiograma, utilizando bases de dados clínicas (PhysioNet).</p>
                     </div>
-                    <div class="bg-slate-50 px-6 py-4 border-t border-slate-100 flex justify-between items-center">
-                        <a href="LINK_PARA_O_REPOSITORIO_OU_RELATORIO" target="_blank" class="text-teal-600 hover:text-teal-800 font-medium text-sm">Ver Código/Relatório &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden flex flex-col justify-between">
-                    <div class="p-6">
-                        <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded">Instrumentação & Eletrónica</span>
-                        <h3 class="text-lg font-bold text-slate-900 mt-3">Protótipo de Oxímetro de Pulso de Baixo Custo</h3>
-                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">Desenvolvimento de um sistema baseado em microcontrolador para aquisição de sinal de fotopletismografia (PPG) e cálculo da saturação de oxigénio no sangue (SpO2).</p>
-                        <p class="text-slate-400 text-xs font-mono mt-4">Tecnologias: Arduino / ESP32 / Eletrónica Analógica</p>
-                    </div>
-                    <div class="bg-slate-50 px-6 py-4 border-t border-slate-100 flex justify-between items-center">
-                        <a href="LINK_PARA_O_REPOSITORIO_OU_RELATORIO" target="_blank" class="text-teal-600 hover:text-teal-800 font-medium text-sm">Ver Detalhes &rarr;</a>
+                    <div class="bg-slate-50 px-8 py-5 border-t border-slate-100 flex justify-between items-center">
+                        <a href="projeto-ecg.html" class="text-slate-900 font-semibold text-sm hover:text-teal-600 transition-colors flex items-center">
+                            Ver Projeto <i class="fas fa-arrow-right ml-2 text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden flex flex-col justify-between">
-                    <div class="p-6">
-                        <span class="bg-purple-100 text-purple-800 text-xs font-bold px-2.5 py-1 rounded">Modelização / Bioinformática</span>
-                        <h3 class="text-lg font-bold text-slate-900 mt-3">Análise Computacional de Modelos Farmacocinéticos</h3>
-                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">Simulação computacional de modelos compartimentais para estudar a distribuição e eliminação de fármacos no organismo humano sob diferentes regimes de dosagem.</p>
-                        <p class="text-slate-400 text-xs font-mono mt-4">Tecnologias: Python (NumPy, Matplotlib) / SimBiology</p>
+                <div class="group bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-amber-100 text-amber-800 text-xs font-bold px-3 py-1 rounded-full">Hardware / C++</span>
+                            <i class="fas fa-microchip text-slate-300 text-2xl group-hover:text-amber-400 transition-colors"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-amber-600 transition-colors">Oxímetro de Pulso (IoT)</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">Protótipo de um dispositivo *wearable* para monitorização contínua de SpO2 e envio de dados em tempo real para uma dashboard via ESP32.</p>
                     </div>
-                    <div class="bg-slate-50 px-6 py-4 border-t border-slate-100 flex justify-between items-center">
-                        <a href="LINK_PARA_O_REPOSITORIO_OU_RELATORIO" target="_blank" class="text-teal-600 hover:text-teal-800 font-medium text-sm">Ver Código &rarr;</a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-xl shadow-xs border border-slate-200 overflow-hidden flex flex-col justify-between">
-                    <div class="p-6">
-                        <span class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-1 rounded">Outros / Artigos</span>
-                        <h3 class="text-lg font-bold text-slate-900 mt-3">Título do Teu Quarto Grande Trabalho</h3>
-                        <p class="text-slate-600 text-sm mt-2 leading-relaxed">Breve descrição do projeto, tese de licenciatura, ou trabalho prático de uma cadeira importante de Mestrado.</p>
-                        <p class="text-slate-400 text-xs font-mono mt-4">Tecnologias: Word / LaTeX / R</p>
-                    </div>
-                    <div class="bg-slate-50 px-6 py-4 border-t border-slate-100 flex justify-between items-center">
-                        <a href="LINK_PARA_O_REPOSITORIO_OU_RELATORIO" target="_blank" class="text-teal-600 hover:text-teal-800 font-medium text-sm">Ver Documento &rarr;</a>
+                    <div class="bg-slate-50 px-8 py-5 border-t border-slate-100 flex justify-between items-center">
+                        <a href="LINK_AQUI" class="text-slate-900 font-semibold text-sm hover:text-amber-600 transition-colors flex items-center">
+                            Ver Projeto <i class="fas fa-arrow-right ml-2 text-xs transform group-hover:translate-x-1 transition-transform"></i>
+                        </a>
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <section class="mb-16 text-center bg-slate-900 text-white p-8 rounded-xl shadow-sm">
-            <h2 class="text-xl font-bold mb-2">Queres ver o meu percurso completo?</h2>
-            <p class="text-slate-400 text-sm mb-6">Faz o download do meu Curriculum Vitae detalhado em formato PDF.</p>
-            <a href="LINK_DO_TEU_CV_NO_GOOGLE_DRIVE_OU_GITHUB" target="_blank" class="inline-block bg-teal-500 hover:bg-teal-400 text-slate-950 px-6 py-3 rounded-lg font-bold text-sm shadow transition">
-                <i class="fas fa-file-pdf mr-2"></i>Descarregar CV (PDF)
-            </a>
+        <section id="cv" class="mb-16 relative overflow-hidden rounded-3xl shadow-2xl" data-aos="zoom-in">
+            <div class="absolute inset-0 bg-gradient-to-r from-teal-900 to-slate-900 opacity-95 z-0"></div>
+            <div class="relative z-10 p-12 text-center text-white">
+                <i class="fas fa-file-alt text-4xl text-teal-400 mb-4 animate-pulse"></i>
+                <h2 class="text-3xl font-bold mb-4">Procuras mais detalhes?</h2>
+                <p class="text-slate-300 mb-8 max-w-xl mx-auto text-lg">Faz o download do meu currículo completo para consultares a minha formação, publicações, competências laboratoriais e experiência académica.</p>
+                <a href="LINK_DO_TEU_PDF" target="_blank" class="inline-block bg-teal-400 hover:bg-teal-300 text-slate-950 px-8 py-4 rounded-full font-bold shadow-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105">
+                    Descarregar CV Completo
+                </a>
+            </div>
         </section>
 
     </main>
 
-    <footer class="bg-slate-100 border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        <p>&copy; 2026 Teu Nome Completo. Mestrado em Engenharia Biomédica e Biofísica - FCUL.</p>
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-400">
+        <p>&copy; 2026 Marco. Desenvolvido para apresentar portfólio em Engenharia Biomédica.</p>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Inicializar as animações
+        AOS.init({
+            duration: 800, // Duração da animação em ms
+            once: true,    // Anima apenas na primeira vez que fazes scroll
+            offset: 100,   // Quantos pixeis antes de aparecer ativa a animação
+        });
+    </script>
 </body>
 </html>
