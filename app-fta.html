@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>VIGIIL-6 | Gestor de Árvore de Falhas</title>
+    
+    <script src="https://unpkg.com/gojs/release/go.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        #header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header-title { margin: 0; font-size: 1.5em; }
+        
+        #toolbar {
+            background-color: #ecf0f1;
+            padding: 10px 20px;
+            border-bottom: 1px solid #bdc3c7;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 12px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            color: white;
+            transition: background-color 0.2s;
+        }
+        .btn-add { background-color: #3498db; }
+        .btn-add:hover { background-color: #2980b9; }
+        
+        .btn-or { background-color: #e67e22; }
+        .btn-or:hover { background-color: #d35400; }
+
+        .btn-and { background-color: #9b59b6; }
+        .btn-and:hover { background-color: #8e44ad; }
+        
+        .btn-action { background-color: #27ae60; }
+        .btn-action:hover { background-color: #2ecc71; }
+        
+        .btn-danger { background-color: #c0392b; }
+        .btn-danger:hover { background-color: #e74c3c; }
+
+        .btn-template { background-color: #f39c12; }
+        .btn-template:hover { background-color: #d68910; }
+        
+        .btn-export-png { background-color: #16a085; }
+        .btn-export-png:hover { background-color: #1abc9c; }
+        
+        .btn-export-svg { background-color: #8e44ad; }
+        .btn-export-svg:hover { background-color: #9b59b6; }
+
+        select, input[type="text"] {
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .workspace {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        #instructions {
+            background-color: #fff3cd;
+            color: #d35400;
+            padding: 5px 20px;
+            font-size: 0.9em;
+            border-bottom: 1px solid #f1c40f;
+            text-align: center;
+        }
+
+        #myDiagramDiv {
+            flex-grow: 1;
+            width: 100%;
+            background-color: #ffffff;
+        }
+        
+        #status { font-size: 0.9em; font-weight: bold; color: #f1c40f; }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h2 class="header-title">VIGIIL-6: Árvore de Falhas (FTA)</h2>
+        <span id="status">A ligar ao Firebase...</span>
+    </div>
+
+    <div id="toolbar">
+        <button class="btn btn-add" onclick="addNode('Falha Básica', 'lightblue', '')">+ Falha</button>
+        <button class="btn btn-or" onclick="addNode('Porta OR', '#fcd6b5', 'OR')">+ Porta OR</button>
+        <button class="btn btn-and" onclick="addNode('Porta AND', '#d7bde2', 'AND')">+ Porta AND</button>
+        
+        <span style="border-left: 2px solid #ccc; height: 30px; margin: 0 10px;"></span>
+
+        <input type="text" id="modelName" placeholder="Nome do modelo...">
+        <button class="btn btn-action" onclick="saveModel()">Guardar Modelo</button>
+        
+        <select id="savedModelsList">
+            <option value="">Selecione um modelo...</option>
+        </select>
+        <button class="btn btn-action" onclick="loadModel()">Carregar Modelo</button>
+
+        <span style="border-left: 2px solid #ccc; height: 30px; margin: 0 10px;"></span>
+        
+        <button class="btn btn-template" onclick="loadVigiilTemplate()">Template</button>
+        <button class="btn btn-action" onclick="organizeTree()">🪄 Organizar Árvore</button>
+
+        <button class="btn btn-export-png" onclick="exportPNG()">📥 Exportar PNG</button>
+        <button class="btn btn-export-svg" onclick="exportSVG()">📥 Exportar SVG (Relatórios)</button>
+        <button class="btn btn-danger" onclick="clearScreen()">Limpar Tela</button>
+    </div>
+
+    <div class="workspace">
+        <div id="instructions">
+            <strong>Dica:</strong> Clica e arrasta no <b>meio do bloco</b> para o mover. Usa os pontos <b>🟢 Verdes</b> e <b>🔴 Vermelhos</b> para desenhar as ligações.
+        </div>
+        <div id="myDiagramDiv"></div>
+    </div>
+
+    <script>
+// 1. CONFIGURAÇÃO FIREBASE
+        const firebaseConfig = {
+            apiKey: "AIzaSyCWx11Lo_ZgPL0aaWesU_zhBgOkCsVnNtk",
+            authDomain: "vigiil-6-fta.firebaseapp.com",
+            databaseURL: "https://vigiil-6-fta-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "vigiil-6-fta",
+            storageBucket: "vigiil-6-fta.firebasestorage.app",
+            messagingSenderId: "223086876931",
+            appId: "1:223086876931:web:182812d4bb5dd172e97136",
+            measurementId: "G-M8QRDYT9PD"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+        const modelsRef = db.ref('vigiil6_models'); 
+        const currentRef = db.ref('vigiil6_current'); 
+
+        const myClientId = Math.random().toString(36).substring(2, 15);
+
+        // 2. CONFIGURAÇÃO GoJS
+        const $ = go.GraphObject.make;
+        let diagram;
+        let isSyncing = false;
+
+        // FUNÇÃO AUXILIAR: Cria as portas de ligação para não repetirmos código
+        function makePort(name, align, spot, isOutput, isInput) {
+            return $(go.Shape, "Circle", {
+                portId: name,
+                alignment: align,
+                desiredSize: new go.Size(12, 12),
+                fill: isOutput ? "#2ecc71" : "#e74c3c", // Verde sai, Vermelho entra
+                stroke: "#34495e",
+                strokeWidth: 1.5,
+                cursor: "crosshair",
+                fromSpot: spot,
+                toSpot: spot,
+                fromLinkable: isOutput,
+                toLinkable: isInput,
+                fromLinkableDuplicates: true,
+                toLinkableDuplicates: true
+            });
+        }
+
+        // FUNÇÃO AUXILIAR: Cria o modelo ativando o uso das portas
+        function createGraphModel(nodeData, linkData) {
+            const model = new go.GraphLinksModel(nodeData, linkData);
+            // Isto diz ao GoJS para usar os IDs das portas que criámos
+            model.linkFromPortIdProperty = "fromPort"; 
+            model.linkToPortIdProperty = "toPort";
+            return model;
+        }
+
+        function initDiagram() {
+            diagram = $(go.Diagram, "myDiagramDiv", {
+                "undoManager.isEnabled": true,
+                layout: $(go.TreeLayout, { 
+                    angle: 90,
+                    layerSpacing: 80,
+                    nodeSpacing: 10,
+                    alignment: go.TreeLayout.AlignmentCenterChildren,
+                    compaction: go.TreeLayout.CompactionBlock,
+                    layerStyle: go.TreeLayout.LayerSiblings
+                }) // Removi a vírgula aqui
+            }); // <--- ESTA CHAVETA E PARÊNTESIS ESTAVAM EM FALTA
+
+            const templateMap = new go.Map();
+
+            // 2.1 TEMPLATE: NÓ PADRÃO
+            templateMap.add("", 
+                $(go.Node, "Spot",
+                    { locationSpot: go.Spot.Center }, 
+                    new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+                    $(go.Panel, "Auto",
+                        $(go.Shape, "RoundedRectangle",
+                            { strokeWidth: 2, fill: "white", stroke: "#34495e", cursor: "pointer" },
+                            new go.Binding("fill", "color")
+                        ),
+                        $(go.TextBlock,
+                            { margin: 12, editable: true, font: "13px 'Segoe UI', sans-serif", textAlign: "center", maxSize: new go.Size(180, NaN) },
+                            new go.Binding("text", "text").makeTwoWay()
+                        )
+                    ),
+                    makePort("IN", go.Spot.Top, go.Spot.Top, false, true),
+                    makePort("OUT", go.Spot.Bottom, go.Spot.Bottom, true, false)
+                )
+            );
+
+            // ... (o resto das definições do templateMap permanece igual até ao final da função)
+            
+            // 2.2 TEMPLATE: PORTA OR
+            templateMap.add("OR", 
+                $(go.Node, "Spot",
+                    { locationSpot: go.Spot.Center }, 
+                    new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+                    $(go.Shape,
+                        { 
+                            geometryString: "F1 M0 45 Q10 10 22.5 0 Q35 10 45 45 Q22.5 35 0 45 Z",
+                            desiredSize: new go.Size(45, 45), strokeWidth: 2, fill: "#fcd6b5", stroke: "#34495e", cursor: "pointer"
+                        },
+                        new go.Binding("fill", "color")
+                    ),
+                    $(go.TextBlock,
+                        { alignment: go.Spot.Bottom, alignmentFocus: go.Spot.Top, editable: true, font: "bold 11px 'Segoe UI', sans-serif", margin: new go.Margin(12,0,0,0) },
+                        new go.Binding("text", "text").makeTwoWay()
+                    ),
+                    makePort("IN", go.Spot.Top, go.Spot.Top, false, true),
+                    makePort("OUT", go.Spot.Bottom, go.Spot.Bottom, true, false)
+                )
+            );
+
+            // 2.3 TEMPLATE: PORTA AND
+            templateMap.add("AND", 
+                $(go.Node, "Spot",
+                    { locationSpot: go.Spot.Center }, 
+                    new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+                    $(go.Shape,
+                        { 
+                            geometryString: "F1 M0 45 L0 22.5 A22.5 22.5 0 0 1 45 22.5 L45 45 Z",
+                            desiredSize: new go.Size(45, 45), strokeWidth: 2, fill: "#d7bde2", stroke: "#34495e", cursor: "pointer"
+                        },
+                        new go.Binding("fill", "color")
+                    ),
+                    $(go.TextBlock,
+                        { alignment: go.Spot.Bottom, alignmentFocus: go.Spot.Top, editable: true, font: "bold 11px 'Segoe UI', sans-serif", margin: new go.Margin(12,0,0,0) },
+                        new go.Binding("text", "text").makeTwoWay()
+                    ),
+                    makePort("IN", go.Spot.Top, go.Spot.Top, false, true),
+                    makePort("OUT", go.Spot.Bottom, go.Spot.Bottom, true, false)
+                )
+            );
+
+            diagram.nodeTemplateMap = templateMap;
+
+            diagram.linkTemplate =
+                $(go.Link, go.Link.Orthogonal,
+                    { 
+                        selectable: true, 
+                        corner: 0, 
+                        relinkableFrom: true, relinkableTo: true 
+                    },
+                    $(go.Shape, { strokeWidth: 2, stroke: "#34495e" })
+                );
+        }
+
+        // FUNÇÃO CORRIGIDA: Atualiza dados antigos para funcionar com as novas Portas
+        function parseLegacyData(data) {
+            if (data && data.nodeDataArray) {
+                data.nodeDataArray.forEach(n => {
+                    if (!n.category) {
+                        if (n.text.includes("Porta OR")) n.category = "OR";
+                        else if (n.text.includes("Porta AND")) n.category = "AND";
+                        else n.category = "";
+                    }
+                });
+            }
+            if (data && data.linkDataArray) {
+                data.linkDataArray.forEach(l => {
+                    // Força todas as setas antigas a usarem a porta de Baixo para Cima
+                    l.fromPort = "OUT";
+                    l.toPort = "IN";
+                });
+            }
+            // Garante que o modelo antigo liga o mapeamento de portas
+            if(data) {
+                data.linkFromPortIdProperty = "fromPort";
+                data.linkToPortIdProperty = "toPort";
+            }
+            return data;
+        }
+
+        // 3. SINCRONIZAÇÃO
+        function listenToCurrentState() {
+            // FIX: Monitor de Ligação Real (Firebase .info/connected)
+            db.ref('.info/connected').on('value', function(snap) {
+                const statusEl = document.getElementById('status');
+                if (snap.val() === true) {
+                    statusEl.innerText = "Online (Ligado)";
+                    statusEl.style.color = "#2ecc71";
+                } else {
+                    statusEl.innerText = "Desligado / A reconectar...";
+                    statusEl.style.color = "#e74c3c";
+                }
+            });
+
+            // Monitorização de Dados (Apenas recebe os dados se houver)
+            currentRef.on('value', (snapshot) => {
+                let data = snapshot.val();
+                if (data && !isSyncing) {
+                    if (data.clientId === myClientId) return;
+                    data = parseLegacyData(data);
+                    isSyncing = true;
+                    diagram.model = go.Model.fromJson(data);
+                    isSyncing = false;
+                }
+            });
+
+            modelsRef.on('value', (snapshot) => {
+                const select = document.getElementById('savedModelsList');
+                select.innerHTML = '<option value="">Selecione um modelo...</option>';
+                snapshot.forEach((child) => {
+                    const option = document.createElement('option');
+                    option.value = child.key; option.text = child.key;
+                    select.appendChild(option);
+                });
+            });
+        }
+        function updateCurrentState(e) {
+            if (e.isTransactionFinished && !isSyncing) {
+                isSyncing = true;
+                const modelData = JSON.parse(diagram.model.toJson());
+                modelData.clientId = myClientId; 
+                currentRef.set(modelData).then(() => isSyncing = false).catch(err => isSyncing = false);
+            }
+        }
+
+        function forceSync() {
+            isSyncing = true;
+            const modelData = JSON.parse(diagram.model.toJson());
+            modelData.clientId = myClientId;
+            currentRef.set(modelData).then(() => isSyncing = false);
+        }
+
+        // 4. FUNÇÕES INTERATIVAS
+        function addNode(type, color, category) {
+            diagram.startTransaction("add node");
+            const newKey = "N" + Math.floor(Math.random() * 100000);
+            diagram.model.addNodeData({ key: newKey, text: type, color: color, category: category, loc: "50 50" });
+            diagram.commitTransaction("add node");
+        }
+
+        function clearScreen(skipConfirm = false) {
+            if(!skipConfirm && !confirm("Isto vai limpar o quadro de todos os utilizadores. Continuar?")) return;
+            diagram.model = createGraphModel([{ key: "E0", text: "E0: Não detetar risco de Caquexia\n(Falso Negativo)", color: "#f39c12", loc: "300 50" }], []);
+            forceSync();
+        }
+        
+        function organizeTree() {
+            diagram.layoutDiagram(true);
+            forceSync();
+        }
+
+        function saveModel() {
+            const name = document.getElementById('modelName').value.trim();
+            if (!name) { alert("Introduza um nome para o modelo!"); return; }
+            const jsonStr = diagram.model.toJson();
+            modelsRef.child(name).set(JSON.parse(jsonStr)).then(() => {
+                alert("Modelo '" + name + "' guardado com sucesso na Cloud!");
+                document.getElementById('modelName').value = "";
+            }).catch(err => alert("Erro ao guardar: " + err.message));
+        }
+
+        function loadModel() {
+            const name = document.getElementById('savedModelsList').value;
+            if (!name) return;
+            if(!confirm("Carregar o modelo vai apagar o quadro atual. Continuar?")) return;
+            
+            modelsRef.child(name).once('value').then((snapshot) => {
+                let data = snapshot.val();
+                if (data) {
+                    data = parseLegacyData(data);
+                    isSyncing = true;
+                    diagram.model = go.Model.fromJson(data);
+                    isSyncing = false;
+                    forceSync();
+                }
+            });
+        }
+
+        function loadVigiilTemplate() {
+            if(!confirm("Carregar o template vai apagar o quadro atual. Continuar?")) return;
+            
+            const nodeDataArray = [
+                { key: "E0", text: "E0: Não detetar risco de Caquexia\n(Falso Negativo)", color: "#f39c12" },
+                { key: "OR1", text: "Porta OR", color: "#fcd6b5", category: "OR" },
+                { key: "OR2", text: "Porta OR", color: "#fcd6b5", category: "OR" },
+                { key: "OR3", text: "Porta OR", color: "#fcd6b5", category: "OR" },
+                { key: "OR4", text: "Porta OR", color: "#fcd6b5", category: "OR" },
+                { key: "G1", text: "Falha na Extração/Processamento\ndo ISF (Cartucho)", color: "#ecf0f1" },
+                { key: "G2", text: "Falha na Leitura Ótica\n(Black-Box)", color: "#ecf0f1" },
+                { key: "G3", text: "Falha no Algoritmo/\nTransmissão (HL7)", color: "#ecf0f1" },
+                { key: "B1", text: "Volume de ISF < 2µL", color: "lightblue" },
+                { key: "B2", text: "Fuga por selo hermético\ndefeituoso (FMEA #1)", color: "lightblue" },
+                { key: "B3", text: "Canais bloqueados por\nimpurezas (FMEA #4)", color: "lightblue" },
+                { key: "B4", text: "Degradação térmica dos\naptâmeros (FMEA #3)", color: "lightblue" },
+                { key: "B5", text: "Desvio de Calibração Ótica\n(Optical Drift) (FMEA #5)", color: "lightblue" },
+                { key: "B6", text: "Centrifugação incompleta\n(Tempo/RPM insuf.) (FMEA #17)", color: "lightblue" },
+                { key: "B7", text: "Sensor de volume enganado\npor bolha (FMEA #8)", color: "lightblue" },
+                { key: "B8", text: "Sincronização HL7 Falha\n(Gráfico desatualizado) (FMEA #19)", color: "lightblue" },
+                { key: "B9", text: "Limiar estático ignora\nDoença Inflam. Ativa (FMEA #21)", color: "lightblue" },
+                { key: "B10", text: "Erro 'Module Freeze': IA bloqueia\natualização dinâmica", color: "#e74c3c" }
+            ];
+
+            // Template agora usa as portas corretas para cada ligação
+            const linkDataArray = [
+                { from: "E0", to: "OR1", fromPort: "OUT", toPort: "IN" }, 
+                { from: "OR1", to: "G1", fromPort: "OUT", toPort: "IN" }, { from: "OR1", to: "G2", fromPort: "OUT", toPort: "IN" }, { from: "OR1", to: "G3", fromPort: "OUT", toPort: "IN" },
+                { from: "G1", to: "OR2", fromPort: "OUT", toPort: "IN" }, { from: "OR2", to: "B1", fromPort: "OUT", toPort: "IN" }, { from: "OR2", to: "B2", fromPort: "OUT", toPort: "IN" }, { from: "OR2", to: "B3", fromPort: "OUT", toPort: "IN" }, { from: "OR2", to: "B4", fromPort: "OUT", toPort: "IN" },
+                { from: "G2", to: "OR3", fromPort: "OUT", toPort: "IN" }, { from: "OR3", to: "B5", fromPort: "OUT", toPort: "IN" }, { from: "OR3", to: "B6", fromPort: "OUT", toPort: "IN" }, { from: "OR3", to: "B7", fromPort: "OUT", toPort: "IN" },
+                { from: "G3", to: "OR4", fromPort: "OUT", toPort: "IN" }, { from: "OR4", to: "B8", fromPort: "OUT", toPort: "IN" }, { from: "OR4", to: "B9", fromPort: "OUT", toPort: "IN" }, { from: "OR4", to: "B10", fromPort: "OUT", toPort: "IN" }
+            ];
+
+            diagram.model = createGraphModel(nodeDataArray, linkDataArray);
+            diagram.layoutDiagram(true); 
+            forceSync();
+        }
+
+        // 5. EXPORTAÇÕES OTIMIZADAS
+        function exportSVG() {
+            if (!diagram) return;
+            const svg = diagram.makeSvg({ scale: 1, background: "white", padding: new go.Margin(20) });
+            const svgstr = new XMLSerializer().serializeToString(svg);
+            const blob = new Blob([svgstr], { type: "image/svg+xml" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.style.display = "none";
+            a.href = url;
+            a.download = "VIGIIL-6_ArvoreDeFalhas.svg";
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+            document.body.removeChild(a);
+        }
+
+        function exportPNG() {
+            if (!diagram) return;
+            const imgData = diagram.makeImageData({ scale: 1, background: "white", type: "image/png", padding: new go.Margin(30), maxSize: new go.Size(Infinity, Infinity) });
+            const a = document.createElement("a");
+            a.style.display = "none";
+            a.href = imgData;
+            a.download = "VIGIIL-6_ArvoreDeFalhas.png";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        window.onload = () => {
+            initDiagram();
+            listenToCurrentState();
+        };
+    </script>
+</body>
+</html>

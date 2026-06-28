@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Collaborative Hypothesis Map</title>
+<style>
+    :root {
+        --bg-yellow: #FEF676;
+        --card-blue: #0099FF;
+        --grid-line: #8FE3D9;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: var(--bg-yellow);
+        margin: 0;
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    /* Header Styling */
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        color: #333;
+        font-weight: normal;
+        margin: 0;
+        font-size: 28px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .app-badge {
+        font-size: 14px;
+        background: #333;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 4px;
+        width: fit-content;
+        margin-top: 5px;
+    }
+
+    .main-topic-container {
+        background: white;
+        padding: 10px 20px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        min-width: 300px;
+    }
+
+    .main-topic-container input {
+        border: none;
+        outline: none;
+        font-size: 24px;
+        width: 100%;
+    }
+
+    .controls {
+        margin-bottom: 15px;
+    }
+
+    button {
+        padding: 10px 15px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+    }
+    
+    button:hover {
+        background-color: #555;
+    }
+
+    /* Board Layout */
+    .board {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 15px;
+        height: 75vh;
+    }
+
+    .column-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .column {
+        background-color: white;
+        border: 2px solid var(--grid-line);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        min-height: 150px;
+    }
+
+    .col-header {
+        text-align: center;
+        padding: 15px;
+        font-size: 18px;
+        border-bottom: 2px solid var(--grid-line);
+    }
+
+    .dropzone {
+        flex-grow: 1;
+        padding: 10px;
+        overflow-y: auto;
+    }
+
+    /* Hypothesis Card Styling */
+    .card {
+        background-color: var(--card-blue);
+        padding: 10px;
+        margin-bottom: 15px;
+        cursor: grab;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        position: relative;
+    }
+
+    .card:active {
+        cursor: grabbing;
+    }
+
+    .card-top {
+        display: flex;
+        justify-content: space-between;
+        color: white;
+        font-weight: bold;
+        margin-bottom: 10px;
+        align-items: center;
+    }
+
+    .card-top input {
+        background: white;
+        border: none;
+        padding: 4px;
+        width: 100px;
+    }
+
+    .card-section {
+        background: white;
+        margin-bottom: 5px;
+        padding: 8px;
+    }
+
+    .card-section label {
+        font-weight: bold;
+        font-size: 14px;
+        display: block;
+    }
+
+    .card-section span {
+        font-size: 12px;
+        color: #555;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .card-section textarea {
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        resize: vertical;
+        min-height: 40px;
+        outline: none;
+        font-family: Arial, sans-serif;
+    }
+
+    .card-footer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+    }
+
+    .card-footer input {
+        width: 60px;
+        text-align: center;
+        padding: 4px;
+        border: none;
+    }
+
+    .delete-btn {
+        background: red;
+        padding: 4px 8px;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+        border: none;
+        border-radius: 3px;
+    }
+</style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>
+            HYPOTHESIS MAP
+            <span class="app-badge" id="appNameDisplay">App: Default</span>
+        </h1>
+        <div class="main-topic-container">
+            MAIN TOPIC <input type="text" id="mainTopicInput" placeholder="Type here...">
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="addCardBtn">+ Add New Hypothesis</button>
+    </div>
+
+    <div class="board">
+        <!-- Column 1 -->
+        <div class="column">
+            <div class="col-header">TO BE VALIDATED</div>
+            <div class="dropzone" id="tobe"></div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="column">
+            <div class="col-header">CRITICAL</div>
+            <div class="dropzone" id="critical"></div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="column">
+            <div class="col-header">UNDER TEST</div>
+            <div class="dropzone" id="test"></div>
+        </div>
+
+        <!-- Column 4 (Split) -->
+        <div class="column-wrapper">
+            <div class="column">
+                <div class="col-header">VALIDATED</div>
+                <div class="dropzone" id="validated"></div>
+            </div>
+            <div class="column">
+                <div class="col-header">UNVALIDATED</div>
+                <div class="dropzone" id="unvalidated"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIREBASE INTEGRATION (Uses modular v9 SDK) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, onValue, set, remove, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+
+        // =========================================================
+        // YOUR LIVE FIREBASE CONFIG
+        // =========================================================
+        const firebaseConfig = {
+          apiKey: "AIzaSyB_MEIBf8BDMOZ7KLhDut4XKFWlvu-uasg",
+          authDomain: "hypothesis-map.firebaseapp.com",
+          databaseURL: "https://hypothesis-map-default-rtdb.europe-west1.firebasedatabase.app",
+          projectId: "hypothesis-map",
+          storageBucket: "hypothesis-map.firebasestorage.app",
+          messagingSenderId: "933884065413",
+          appId: "1:933884065413:web:3cebfe726e8b82841b1bec"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // =========================================================
+        // DYNAMIC APP LOGIC (Separates data based on URL)
+        // =========================================================
+        const urlParams = new URLSearchParams(window.location.search);
+        const appId = urlParams.get('app') || 'default_app'; // Lê o link. Se não tiver nada, usa "default_app"
+        
+        // Mostrar visualmente em que "Aplicação" estamos
+        document.getElementById('appNameDisplay').innerText = `App: ${appId}`;
+
+        // References to our data NOW PREFIXED WITH THE APP ID
+        const cardsRef = ref(db, `${appId}/cards`);
+        const mainTopicRef = ref(db, `${appId}/mainTopic`);
+
+        // --- 1. SYNC MAIN TOPIC ---
+        const mainTopicInput = document.getElementById('mainTopicInput');
+        
+        onValue(mainTopicRef, (snapshot) => {
+            if (document.activeElement !== mainTopicInput) {
+                mainTopicInput.value = snapshot.val() || '';
+            }
+        });
+
+        mainTopicInput.addEventListener('input', (e) => {
+            set(mainTopicRef, e.target.value);
+        });
+
+        // --- 2. SYNC CARDS ---
+        onValue(cardsRef, (snapshot) => {
+            const data = snapshot.val() || {};
+            
+            // Remove cards from screen that were deleted in DB
+            document.querySelectorAll('.card').forEach(cardEl => {
+                if (!data[cardEl.id]) cardEl.remove();
+            });
+
+            // Add new cards or update existing ones
+            for (const [id, cardData] of Object.entries(data)) {
+                let cardEl = document.getElementById(id);
+                
+                if (!cardEl) {
+                    cardEl = createCardElement(id);
+                    document.getElementById(cardData.columnId || 'tobe').appendChild(cardEl);
+                } else if (cardEl.parentElement.id !== cardData.columnId) {
+                    document.getElementById(cardData.columnId || 'tobe').appendChild(cardEl);
+                }
+
+                updateFieldIfNotFocused(cardEl, '.in-topic', cardData.topic);
+                updateFieldIfNotFocused(cardEl, '.in-hypo', cardData.hypothesis);
+                updateFieldIfNotFocused(cardEl, '.in-tests', cardData.tests);
+                updateFieldIfNotFocused(cardEl, '.in-val', cardData.validation);
+                updateFieldIfNotFocused(cardEl, '.in-res', cardData.results);
+                updateFieldIfNotFocused(cardEl, '.in-code', cardData.code);
+            }
+        });
+
+        function updateFieldIfNotFocused(cardEl, selector, value) {
+            const el = cardEl.querySelector(selector);
+            if (document.activeElement !== el) {
+                el.value = value || '';
+            }
+        }
+
+        // --- 3. CREATE NEW CARD ---
+        document.getElementById('addCardBtn').addEventListener('click', () => {
+            const newId = 'card-' + Date.now();
+            const newCardData = {
+                columnId: 'tobe',
+                topic: '',
+                hypothesis: '',
+                tests: '',
+                validation: '',
+                results: '',
+                code: ''
+            };
+            set(ref(db, `${appId}/cards/${newId}`), newCardData);
+        });
+
+        // --- 4. CARD HTML TEMPLATE & LOCAL LISTENERS ---
+        function createCardElement(id) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.id = id;
+            card.draggable = true;
+            
+            card.addEventListener('dragstart', (ev) => {
+                ev.dataTransfer.setData("text", ev.target.id);
+            });
+
+            card.innerHTML = `
+                <div class="card-top">
+                    HYPOTHESIS FORM
+                    <input type="text" class="in-topic" placeholder="MAIN TOPIC">
+                </div>
+                
+                <div class="card-section">
+                    <label>HYPOTHESIS</label>
+                    <span>What is the idea you want to prove right?</span>
+                    <textarea class="in-hypo"></textarea>
+                </div>
+                
+                <div class="card-section">
+                    <label>TESTS</label>
+                    <span>What methods and tools will you use?</span>
+                    <textarea class="in-tests"></textarea>
+                </div>
+
+                <div class="card-section">
+                    <label>VALIDATION</label>
+                    <span>What are you expecting to see?</span>
+                    <textarea class="in-val"></textarea>
+                </div>
+
+                <div class="card-section">
+                    <label>RESULTS</label>
+                    <span>What are your conclusions?</span>
+                    <textarea class="in-res"></textarea>
+                </div>
+
+                <div class="card-footer">
+                    <button class="delete-btn">Delete</button>
+                    <input type="text" class="in-code" placeholder="CODE">
+                </div>
+            `;
+
+            const setupInputSync = (selector, dbField) => {
+                card.querySelector(selector).addEventListener('input', (e) => {
+                    update(ref(db, `${appId}/cards/${id}`), { [dbField]: e.target.value });
+                });
+            };
+
+            setupInputSync('.in-topic', 'topic');
+            setupInputSync('.in-hypo', 'hypothesis');
+            setupInputSync('.in-tests', 'tests');
+            setupInputSync('.in-val', 'validation');
+            setupInputSync('.in-res', 'results');
+            setupInputSync('.in-code', 'code');
+
+            card.querySelector('.delete-btn').addEventListener('click', () => {
+                if(confirm("Are you sure you want to delete this hypothesis?")) {
+                    remove(ref(db, `${appId}/cards/${id}`));
+                }
+            });
+
+            return card;
+        }
+
+        // --- 5. DRAG AND DROP ZONES ---
+        document.querySelectorAll('.dropzone').forEach(zone => {
+            zone.addEventListener('dragover', (ev) => {
+                ev.preventDefault();
+            });
+
+            zone.addEventListener('drop', (ev) => {
+                ev.preventDefault();
+                const cardId = ev.dataTransfer.getData("text");
+                
+                let target = ev.target;
+                while (!target.classList.contains('dropzone') && target !== document.body) {
+                    target = target.parentElement;
+                }
+                
+                if (target.classList.contains('dropzone')) {
+                    update(ref(db, `${appId}/cards/${cardId}`), { columnId: target.id });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
