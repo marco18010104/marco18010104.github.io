@@ -3,49 +3,163 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiDRoSIS | Portfólio Marco António Ferreira</title>
+    <title>Integração PET no matRad | Marco Ferreira</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <!-- NAVEGAÇÃO -->
-    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800">
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800 sticky top-0">
         <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Início</a>
+            <a href="index.html" class="font-bold text-blue-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
         </div>
     </nav>
 
-    <!-- HEADER DO PROJETO -->
-   <header class="bg-white border-b border-slate-200 py-16 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">Radioterapia</span>
-                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full">MATLAB</span>
+    <header class="bg-slate-900 border-b border-slate-800 py-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0, #3b82f6 1px, transparent 1px, transparent 100%); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-white">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full"><i class="fas fa-radiation mr-1"></i> Física Médica</span>
+                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-3 py-1 rounded-full">MATLAB Object-Oriented</span>
+                <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">matRad Extension</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Integração PET no matRad</h1>
-            <p class="text-xl text-slate-600 mb-8">Análise de Imagens PET para Heterogeneidade Tumoral na Terapia com Protões</p>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-300">
+                PET Heterogeneity Analytics™
+            </h1>
+            <p class="text-xl text-slate-300 mb-8 font-light leading-relaxed">
+                Desenvolvimento de uma <em>framework</em> computacional integrada ao TPS matRad para quantificação de heterogeneidade intra-tumoral e otimização biológica multi-modelo via <em>Dose Painting</em>.
+            </p>
+            
+            <div class="flex items-center gap-4 text-sm text-slate-400 border-t border-slate-700 pt-6">
+                <div class="flex items-center"><i class="fas fa-university mr-2 text-blue-400"></i> FCUL - Mestrado em Eng. Biomédica e Biofísica</div>
+                <div class="flex items-center"><i class="fas fa-book-open mr-2 text-blue-400"></i> Diagnóstico e Terapia com Radiação e Protões</div>
+            </div>
+            <p class="text-xs text-slate-500 mt-2">Co-autores: Camila Trincheiras & Luis Curado</p>
         </div>
     </header>
 
     <main class="max-w-4xl mx-auto px-6 py-12">
-        <div class="prose prose-slate prose-lg max-w-none">
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">O Desafio Clínico</h2>
+        
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-blue-500 pb-2 inline-flex items-center">
+                <i class="fas fa-bullseye text-blue-500 mr-3"></i> O Paradigma Clínico
+            </h2>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <p class="text-slate-700 leading-relaxed mb-4">
+                    O paradigma atual da radioterapia de precisão está a transitar da <strong>conformidade anatómica</strong> (tratar todo o tumor de forma igual) para a <strong>adaptação biológica</strong>. Imagens funcionais como o PET com 18F-FDG fornecem dados cruciais sobre o metabolismo tumoral e a sua resistência à radiação.
+                </p>
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg text-slate-700">
+                    <strong>O Problema:</strong> A tradução dos valores de captação (SUV) para prescrições espaciais de dose — processo conhecido como <em>Dose Painting by Numbers (DPBN)</em> — não está padronizada. A literatura propõe múltiplos modelos matemáticos (lineares, sigmoides, probabilísticos), mas falta um ambiente computacional unificado num <em>Treatment Planning System</em> (TPS) para compará-los clinicamente.
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-teal-500 pb-2 inline-flex items-center">
+                <i class="fas fa-laptop-medical text-teal-500 mr-3"></i> BioPlan Analytics: A Dashboard
+            </h2>
             <p class="text-slate-700 leading-relaxed mb-6">
-                Desenvolvido no âmbito da disciplina de Diagnóstico e Terapia com Radiação e Protões, este projeto focou-se em expandir as capacidades do matRad (um sistema open-source de planeamento de tratamentos de radioterapia).
+                Para colmatar esta lacuna, desenvolvemos o <strong>matRad_BioModellingApp</strong>, uma interface gráfica clínica (GUI) totalmente programada em MATLAB (Orientada a Objetos) que se integra no motor <em>open-source</em> do matRad. A plataforma faz a ponte entre os dados brutos de imagem (PET/CT) e a otimização da fluência de tratamento.
             </p>
             
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">Implementação</h2>
-            <ul class="list-disc pl-6 text-slate-700 mb-8 space-y-2">
-                <li><strong>Importação e Exportação:</strong> Adicionada a funcionalidade para o matRad ler e processar dados de Tomografia por Emissão de Positrões (PET), especificamente formatos <code>.pt</code> e <code>.pst</code>.</li>
-                <li><strong>Heterogeneidade Tumoral:</strong> Implementação de algoritmos para análise avançada de imagens PET, baseando a extração de dados em modelos matemáticos e biológicos validados na literatura científica atual.</li>
-                <li>Otimização da visualização de zonas de alta atividade metabólica para auxiliar o planeamento de doses na terapia por feixe de protões.</li>
-            </ul>
-        </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <h3 class="font-bold text-slate-900 flex items-center mb-2"><i class="fas fa-search-plus text-teal-500 w-6"></i> Micro & Macro View</h3>
+                    <p class="text-sm text-slate-600">Visualização rápida da heterogeneidade espacial em 3D e inspeção detalhada voxel-a-voxel da grelha anatómica e funcional.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <h3 class="font-bold text-slate-900 flex items-center mb-2"><i class="fas fa-chart-line text-teal-500 w-6"></i> Estatística Populacional</h3>
+                    <p class="text-sm text-slate-600">Geração de métricas de avaliação do plano, incluindo <em>Boxplots</em>, RMSE, <em>Dice similarity</em> e correlações biológicas.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <h3 class="font-bold text-slate-900 flex items-center mb-2"><i class="fas fa-layer-group text-teal-500 w-6"></i> Volumetria (BVH)</h3>
+                    <p class="text-sm text-slate-600">Introdução do conceito de Histograma de Volume Biológico (BVH) para análise da composição tecidular de risco.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                    <h3 class="font-bold text-slate-900 flex items-center mb-2"><i class="fas fa-clipboard-check text-teal-500 w-6"></i> Planning & QA</h3>
+                    <p class="text-sm text-slate-600">Otimização inversa (IPOPT) conectada à prescrição biológica e análise de Qualidade do Volume (QVH).</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-indigo-500 pb-2 inline-flex items-center">
+                <i class="fas fa-brain text-indigo-500 mr-3"></i> Otimização Biológica: 8 Modelos Implementados
+            </h2>
+            <p class="text-slate-700 leading-relaxed mb-8">
+                O grande diferencial tecnológico deste projeto foi a codificação e integração de 8 modelos de conversão SUV-para-Dose distintos baseados em literatura científica de ponta, permitindo testar o impacto da heterogeneidade sob diferentes óticas:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="relative pl-4 border-l-4 border-indigo-400">
+                    <h4 class="font-bold text-slate-900">Kafkaletos (Densidade Celular)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Aproximação linear assumindo que a captação de FDG é proporcional à densidade de células viáveis, subtraindo o sinal de fundo fisiológico.</p>
+                </div>
+                <div class="relative pl-4 border-l-4 border-indigo-400">
+                    <h4 class="font-bold text-slate-900">Vanderstraeten (Percentil Estatístico)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Modelo linear robusto a ruído (píxeis anómalos) que utiliza o 95º percentil (I95) do SUV populacional como rampa de dose máxima.</p>
+                </div>
+                <div class="relative pl-4 border-l-4 border-indigo-400">
+                    <h4 class="font-bold text-slate-900">Flynn (Redistribuição Isotóxica)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Modelo de Conservação da Dose Integral. Os "hotspots" recebem mais dose através da subtração de dose nos "coldspots", mantendo a energia total constante.</p>
+                </div>
+                <div class="relative pl-4 border-l-4 border-indigo-400">
+                    <h4 class="font-bold text-slate-900">Sigmoid (Surrogato de Hipóxia)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Curva logística não-linear que reflete o "efeito de saturação" celular (Emax), em que o aumento de dose não resulta em aumento proporcional de morte celular.</p>
+                </div>
+                <div class="relative pl-4 border-l-4 border-purple-500">
+                    <h4 class="font-bold text-slate-900">Radiomics (Heterogeneidade Textural)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Vai além da intensidade (SUV) e avalia a entropia de Shannon espacial com matrizes 9x9 (quantizadas em 32 bins) para detetar vascularização caótica ou necrose.</p>
+                </div>
+                <div class="relative pl-4 border-l-4 border-purple-500">
+                    <h4 class="font-bold text-slate-900">Wang (Gradiente Espacial 3D)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Combina a intensidade com a magnitude do gradiente 3D local. Assume que zonas com rápida variação de SUV (fronteiras de necrose) são biologicamente agressivas.</p>
+                </div>
+                <div class="relative pl-4 border-l-4 border-slate-400">
+                    <h4 class="font-bold text-slate-900">Differding (Limiar Adaptativo)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Estratégia conservadora que escala a dose apenas em voxels com captação superior à mediana do tumor, poupando zonas necróticas.</p>
+                </div>
+                <div class="relative pl-4 border-l-4 border-slate-400">
+                    <h4 class="font-bold text-slate-900">Threshold (Dose Painting by Contours)</h4>
+                    <p class="text-sm text-slate-600 mt-1">Método binário padrão (DPBC). Trata o GTV como dois sub-volumes estanques: Alto Risco (>50% SUVmax) e Risco Padrão.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 text-white rounded-2xl p-8 shadow-xl" data-aos="zoom-in">
+            <h2 class="text-2xl font-bold text-blue-400 mb-4"><i class="fas fa-flag-checkered mr-2"></i> Impacto Clínico e Futuro</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+                O sucesso na implementação desta <em>framework</em> confirma que a heterogeneidade tumoral não é uma métrica única, mas sim fortemente dependente da "lente" biológica (modelo matemático) aplicada para a observar.
+            </p>
+            <p class="text-slate-300 leading-relaxed mb-6">
+                Ao fornecer <strong>Mapas de Diferença em tempo real</strong> (Modelo vs. Prescrição Anatómica), a nossa ferramenta dota os dosimetristas e físicos médicos da confiança necessária para visualizar desvios e avançar do modelo "um-tamanho-serve-a-todos" para tratamentos verdadeiramente biológicos e personalizados.
+            </p>
+            <div class="border-t border-slate-700 pt-4 flex flex-col md:flex-row gap-6">
+                <div>
+                    <h4 class="font-bold text-sm text-slate-400 uppercase tracking-wider mb-2">Perspetivas Futuras</h4>
+                    <ul class="text-sm text-slate-300 space-y-2 list-disc pl-4">
+                        <li>Integração da otimização de fluência com cálculo de dose Monte Carlo.</li>
+                        <li>Correlação rádio-genómica: validar <em>clusters</em> de Alto Risco identificados (ex: algoritmos K-Means) com biópsias in vivo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-400 mt-12">
-        <p>&copy; 2026 Marco António Ferreira. Projeto distribuído sob a Licença MIT.</p>
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-500 border-t border-slate-800">
+        <p>&copy; 2026 Marco Ferreira. Projeto inserido no Mestrado em Engenharia Biomédica e Biofísica - FCUL.</p>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+    </script>
 </body>
 </html>
