@@ -16,7 +16,6 @@
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
 
-    <!-- MENU DE NAVEGAÇÃO COM DROPDOWN -->
     <nav class="fixed w-full bg-slate-900/80 backdrop-blur-lg text-white z-50 border-b border-slate-700">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="font-bold text-teal-400 tracking-widest text-lg hover:text-white transition">PORTFÓLIO DE MARCO ANTÓNIO FERREIRA</a>
@@ -24,7 +23,6 @@
             <div class="hidden md:flex space-x-8 text-sm font-medium items-center">
                 <a href="#sobre" class="hover:text-teal-400 transition-colors">Sobre Mim</a>
                 
-                <!-- DROPDOWN DE PROJETOS -->
                 <div class="relative group py-2">
                     <button class="hover:text-teal-400 transition-colors flex items-center">
                         Portfólio <i class="fas fa-chevron-down ml-2 text-xs opacity-70"></i>
@@ -33,7 +31,6 @@
                         <a href="#mestrado" class="px-5 py-3 hover:bg-teal-50 hover:text-teal-700 transition border-b border-slate-50 font-semibold"><i class="fas fa-graduation-cap w-5"></i> Trabalhos e projetos curriculares</a>
                         <a href="#licenciatura" class="px-5 py-3 hover:bg-teal-50 hover:text-teal-700 transition border-b border-slate-50 font-semibold"><i class="fas fa-book w-5"></i> Desenvolvimento de Apps</a>
                         <a href="#extras" class="px-5 py-3 hover:bg-teal-50 hover:text-teal-700 transition font-semibold"><i class="fas fa-star w-5"></i>Projetos extracurriculares</a>
-                        <!-- Se tiveres doutoramento no futuro, adicionas aqui a linha -->
                     </div>
                 </div>
 
@@ -43,13 +40,10 @@
         </div>
     </nav>
 
-    <!-- HEADER / HERO SECTION -->
     <header class="bg-slate-900 text-white pt-36 pb-24 px-6 text-center relative overflow-hidden">
-        <!-- Padrão de fundo tecnológico -->
         <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#14b8a6 1px, transparent 1px); background-size: 30px 30px;"></div>
         
         <div class="max-w-4xl mx-auto relative z-10" data-aos="zoom-in" data-aos-duration="1000">
-            <!-- TUA FOTOGRAFIA (Muda o perfil.jpg para o nome do teu ficheiro caso seja .png) -->
             <img src="perfil.jpg" alt="Marco António Ferreira" class="w-40 h-40 rounded-full mx-auto mb-6 object-cover border-4 border-teal-500 shadow-2xl shadow-teal-500/20 transition-transform hover:scale-105 duration-300 bg-slate-800">
             
             <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-400">
@@ -58,7 +52,6 @@
             <p class="text-2xl text-slate-300 font-light mb-2">Engenharia Biomédica e Biofísica</p>
             <p class="text-slate-400 text-sm font-mono bg-slate-800/50 inline-block px-4 py-1 rounded-full border border-slate-700">FCUL - Universidade de Lisboa</p>
             
-            <!-- Links Redes -->
             <div class="mt-10 flex flex-wrap justify-center gap-4">
                 <a href="https://www.linkedin.com/in/marcoferreira0417/" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-full font-semibold border border-slate-600 transition-all hover:-translate-y-1"><i class="fab fa-linkedin text-[#0A66C2] mr-2"></i>LinkedIn</a>
                 <a href="https://orcid.org/0009-0008-3425-0899" target="_blank" class="bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-full font-semibold border border-slate-600 transition-all hover:-translate-y-1"><i class="fab fa-orcid text-[#A6CE39] mr-2"></i>ORCID</a>
@@ -69,7 +62,6 @@
 
     <main class="max-w-6xl mx-auto px-6 py-16">
         
-        <!-- SOBRE MIM -->
         <section id="sobre" class="mb-24" data-aos="fade-up">
             <h2 class="text-3xl font-bold text-slate-900 mb-8 border-b-2 border-teal-500 pb-2 inline-block">Sobre o Meu Percurso</h2>
             <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
@@ -82,9 +74,6 @@
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SECÇÃO: MESTRADO E INVESTIGAÇÃO AVANÇADA   -->
-        <!-- ========================================== -->
         <section id="mestrado" class="mb-20">
             <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
                 <div class="bg-teal-100 p-3 rounded-xl"><i class="fas fa-graduation-cap text-teal-700 text-xl"></i></div>
@@ -93,7 +82,6 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- PROJETO MESTRADO 1: LiDRoSIS -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex justify-between items-start mb-3">
@@ -105,7 +93,6 @@
                     <a href="projeto-lidrosis.html" class="text-teal-600 font-semibold text-sm hover:text-teal-800 mt-auto flex items-center">Ver Plataforma <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
 
-                <!-- PROJETO MESTRADO 2: matRad -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex justify-between items-start mb-3">
@@ -117,7 +104,6 @@
                     <a href="projeto-matrad.html" class="text-blue-600 font-semibold text-sm hover:text-blue-800 mt-auto flex items-center">Ver Código <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
 
-                <!-- PROJETO MESTRADO 3 (TEMPLATE VAZIO PARA ADICIONARES DEPOIS) -->
                 <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-6 flex flex-col items-center justify-center text-center opacity-70 hover:opacity-100 transition-opacity">
                     <i class="fas fa-plus-circle text-3xl text-slate-400 mb-2"></i>
                     <h3 class="font-bold text-slate-700">SOON (Projeto de Mestrado)</h3>
@@ -127,9 +113,6 @@
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SECÇÃO: LICENCIATURA E DESENVOLVIMENTO     -->
-        <!-- ========================================== -->
         <section id="licenciatura" class="mb-20">
             <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
                 <div class="bg-indigo-100 p-3 rounded-xl"><i class="fas fa-book text-indigo-700 text-xl"></i></div>
@@ -138,31 +121,32 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- PROJETO LIC. 1: Fault Trees -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex justify-between items-start mb-3">
                             <span class="text-xs font-bold px-2 py-1 bg-indigo-100 text-indigo-800 rounded">Mestrado - A1S2: Dispositivos Médicos II</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">App Árvore de Falhas (FTA)</h3>
-                        <p class="text-slate-600 text-sm mb-4">Aplicação gráfica para desenho, modelação estrutural e análise de risco usando Árvores de Falhas (FTA).</p>
+                        <p class="text-slate-600 text-sm mb-4">Aplicação gráfica online para desenho, modelação estrutural e análise de risco usando Árvores de Falhas (FTA).</p>
                     </div>
-                    <a href="projeto-faulttrees.html" class="text-indigo-600 font-semibold text-sm hover:text-indigo-800 mt-auto flex items-center">Ver App <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="app-fta.html" target="_blank" class="text-indigo-600 font-bold text-sm hover:text-indigo-800 mt-auto flex items-center">
+                        Abrir App FTA <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
                 </div>
 
-                <!-- PROJETO LIC. 2: Hypothesis -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex justify-between items-start mb-3">
                             <span class="text-xs font-bold px-2 py-1 bg-purple-100 text-purple-800 rounded">Mestrado - A1S2: Mindset Empreendedor</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">App Hypothesis Map</h3>
-                        <p class="text-slate-600 text-sm mb-4">Software interativo para preenchimento digital, planeamento e validação de ideias de negócio e investigação.</p>
+                        <p class="text-slate-600 text-sm mb-4">Software interativo live para preenchimento digital, planeamento e validação de ideias de negócio e investigação.</p>
                     </div>
-                    <a href="projeto-hypothesis.html" class="text-purple-600 font-semibold text-sm hover:text-purple-800 mt-auto flex items-center">Ver App <i class="fas fa-arrow-right ml-2"></i></a>
+                    <a href="app-hypothesis.html" target="_blank" class="text-purple-600 font-bold text-sm hover:text-purple-800 mt-auto flex items-center">
+                        Abrir App Hypothesis <i class="fas fa-external-link-alt ml-2"></i>
+                    </a>
                 </div>
 
-                <!-- TEMPLATE VAZIO LICENCIATURA -->
                 <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-6 flex flex-col items-center justify-center text-center opacity-70 hover:opacity-100 transition-opacity">
                     <i class="fas fa-plus-circle text-3xl text-slate-400 mb-2"></i>
                     <h3 class="font-bold text-slate-700">EM ATUALIZAÇÃO</h3>
@@ -171,9 +155,6 @@
             </div>
         </section>
 
-        <!-- ========================================== -->
-        <!-- SECÇÃO: ESTÁGIOS E EXTRAS (CEAUL)          -->
-        <!-- ========================================== -->
         <section id="extras" class="mb-20">
             <div class="flex items-center gap-4 mb-8" data-aos="fade-right">
                 <div class="bg-amber-100 p-3 rounded-xl"><i class="fas fa-star text-amber-700 text-xl"></i></div>
@@ -182,7 +163,6 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- PROJETO CEAUL -->
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex justify-between items-start mb-3">
@@ -195,11 +175,9 @@
                             <span class="text-[10px] font-mono bg-slate-100 text-slate-600 px-2 py-1 rounded">Estatística</span>
                         </div>
                     </div>
-                    <!-- Se tiveres um repo/relatório para este, coloca aqui o link. Senão podes remover este botão -->
                     <a href="projeto-ceaul.html" class="text-amber-600 font-semibold text-sm hover:text-amber-800 mt-4 flex items-center">Ver Relatório <i class="fas fa-arrow-right ml-2"></i></a>
                 </div>
 
-                <!-- TEMPLATE VAZIO EXTRAS 1 -->
                 <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-6 flex flex-col items-center justify-center text-center opacity-70 hover:opacity-100 transition-opacity">
                     <i class="fas fa-plus-circle text-3xl text-slate-400 mb-2"></i>
                     <h3 class="font-bold text-slate-700">SOON</h3>
@@ -208,7 +186,6 @@
             </div>
         </section>
 
-        <!-- CV BANNER -->
         <section id="cv" class="mb-24" data-aos="zoom-in">
             <div class="bg-gradient-to-r from-teal-900 to-slate-900 rounded-3xl p-10 md:p-16 text-center text-white shadow-2xl relative overflow-hidden">
                 <i class="fas fa-file-pdf text-5xl text-teal-400 mb-6 opacity-80"></i>
@@ -220,20 +197,17 @@
 
     </main>
 
-    <!-- SECÇÃO DE CONTACTOS & RODAPÉ -->
     <footer id="contactos" class="bg-slate-900 text-white pt-16 pb-8 border-t-4 border-teal-500">
         <div class="max-w-4xl mx-auto px-6 mb-12 text-center">
             <h2 class="text-3xl font-bold mb-8">Vamos Trabalhar Juntos?</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
-                <!-- Email Institucional -->
                 <a href="mailto:fc60327@alunos.fc.ul.pt" class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-teal-500 transition-colors group">
                     <i class="fas fa-university text-3xl text-teal-400 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h3 class="font-bold text-lg mb-1">Email Institucional (FCUL)</h3>
                     <p class="text-slate-400 font-mono text-sm">fc60327@alunos.fc.ul.pt</p>
                 </a>
                 
-                <!-- Email Pessoal / Geral -->
                 <a href="mailto:marco.antfer1737@gmail.com" class="bg-slate-800 p-6 rounded-2xl border border-slate-700 hover:border-teal-500 transition-colors group">
                     <i class="fas fa-envelope text-3xl text-teal-400 mb-3 group-hover:scale-110 transition-transform"></i>
                     <h3 class="font-bold text-lg mb-1">Email Pessoal</h3>
