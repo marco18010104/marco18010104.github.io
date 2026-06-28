@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiDRoSIS | Portfólio Marco António Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Início</a>
+        </div>
+    </nav>
+
+    <!-- HEADER DO PROJETO -->
+    <header class="bg-white border-b border-slate-200 py-16 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">App Development</span>
+                <span class="bg-slate-100 text-slate-800 text-xs font-bold px-3 py-1 rounded-full">Mindset & Inovação</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">Hypothesis Maps App</h1>
+            <p class="text-xl text-slate-600 mb-8">Aplicação de Apoio ao Planeamento e Validação de Ideias</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="prose prose-slate prose-lg max-w-none">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">Sobre o Projeto</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Aplicação desenvolvida para otimizar o fluxo de trabalho da unidade curricular de Mindset. O objetivo foi criar uma ferramenta digital interativa que substituísse o preenchimento manual dos "Hypothesis Maps".
+            </p>
+            <p class="text-slate-700 leading-relaxed mb-8">
+                A aplicação permite aos utilizadores estruturarem claramente as suas hipóteses de negócio ou projeto, definirem os testes práticos a realizar, e registarem as métricas de validação de forma centralizada e organizada, fomentando o pensamento empreendedor e científico.
+            </p>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-400 mt-12">
+        <p>&copy; 2026 Marco António Ferreira. Projeto distribuído sob a Licença MIT.</p>
+    </footer>
+</body>
+</html>
