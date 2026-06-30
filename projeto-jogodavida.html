@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Jogo da Vida | Portfólio Marco Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800 sticky top-0">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-cyan-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+        </div>
+    </nav>
+
+    <!-- HEADER DO PROJETO -->
+    <header class="bg-slate-900 border-b border-slate-800 py-20 px-6 relative overflow-hidden">
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-white">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full">Licenciatura</span>
+                <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">A1S1</span>
+                <span class="bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-xs font-bold px-3 py-1 rounded-full">Programação</span>
+            </div>
+            
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-300">
+                O Jogo da Vida
+            </h1>
+            <p class="text-xl text-slate-300 mb-8 font-light leading-relaxed">
+                Implementação na linguagem C do clássico autómato celular de John Conway.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-6 text-sm text-slate-400 border-t border-slate-700 pt-6">
+                <div class="flex items-center"><i class="fas fa-university mr-2 text-cyan-400"></i> FCUL</div>
+                <div class="flex items-center"><i class="fas fa-users mr-2 text-cyan-400"></i> Co-autores: André Costa, Inês Caixeiro</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- CORPO DO PROJETO -->
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        
+        <!-- O QUE É O JOGO DA VIDA -->
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-cyan-500 pb-2 inline-flex items-center">
+                <i class="fas fa-info-circle text-cyan-500 mr-3"></i> O Que É o Jogo da Vida?
+            </h2>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <p class="text-slate-700 leading-relaxed mb-4">
+                    Proposto por John Conway em 1968, o "Jogo da Vida" é um autómato celular. Decorre numa grelha bi-dimensional ("mundo") onde cada célula pode estar "viva" (1) ou "morta" (0).
+                </p>
+                <p class="text-slate-700 leading-relaxed mb-4">
+                    O estado da grelha evolui através de gerações discretas de tempo. Em cada geração, o estado de cada célula é atualizado *sincronamente* com base no estado dos seus 8 vizinhos, segundo um conjunto de regras estritas:
+                </p>
+                <ul class="list-disc pl-6 text-slate-700 space-y-2">
+                    <li><strong>Sobrevivência:</strong> Uma célula viva com 2 ou 3 vizinhos vivos mantém-se viva.</li>
+                    <li><strong>Morte por Sobrelotação:</strong> Uma célula viva com mais de 3 vizinhos vivos morre.</li>
+                    <li><strong>Morte por Desproteção (Isolamento):</strong> Uma célula viva com menos de 2 vizinhos vivos morre.</li>
+                    <li><strong>Nascimento:</strong> Uma célula morta com exatamente 3 vizinhos vivos renasce.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- IMPLEMENTAÇÃO EM C -->
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-blue-500 pb-2 inline-flex items-center">
+                <i class="fas fa-code text-blue-500 mr-3"></i> Algoritmia e Estrutura de Dados
+            </h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Este projeto de A1S1 exigiu a modelação das regras do jogo em linguagem C, lidando com os desafios clássicos de manipulação de matrizes, controlo de fluxo, condições de fronteira, e I/O (Input/Output). 
+            </p>
+            
+            <div class="space-y-6">
+                <!-- Destaque 1 -->
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2">1. Condições de Fronteira Periódicas (O "Mundo Esférico")</h4>
+                    <p class="text-sm text-slate-600">
+                        O desafio das matrizes finitas é o cálculo dos vizinhos nas bordas da grelha. Para evitar condições especiais complexas nos limites, optou-se por uma matriz *virtual* contida numa matriz *efetiva* (com duas linhas e duas colunas adicionais). O mundo "dobra-se" sobre si mesmo (topologia toroidal). Os bordos virtuais copiam a informação do lado oposto da matriz antes de cada iteração da função <code>iteraMundo()</code>.
+                    </p>
+                </div>
+                
+                <!-- Destaque 2 -->
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2">2. Atualização Síncrona vs Assíncrona</h4>
+                    <p class="text-sm text-slate-600">
+                        No Jogo da Vida as alterações de estado devem ocorrer simultaneamente. Se a matriz principal fosse alterada durante o cálculo das regras de sobrevivência de uma determinada célula, as células seguintes utilizariam o "futuro" e não o "presente" da célula calculada. A solução programática envolveu o uso de uma <code>mundoAuxiliar</code>, para onde as computações são guardadas, permitindo que a avaliação das regras decorra apenas sobre o estado inalterado da matriz original.
+                    </p>
+                </div>
+
+                <!-- Destaque 3 -->
+                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-2">3. Otimização de Memória e <code>iteraMundoNgeracoesParte2</code></h4>
+                    <p class="text-sm text-slate-600">
+                        Para otimizar o tempo de processamento em múltiplas gerações (ex: simular N ciclos), implementou-se a função <code>iteraMundoNgeracoesParte2()</code>. Em vez de copiar repetidamente a matriz auxiliar para a matriz principal no fim de cada ciclo (como a versão de base fazia), esta função utiliza aritmética de ponteiros e o operador módulo <code>(%)</code>. Alterna os papéis: nas gerações pares, o `mundo` serve de referência para o cálculo do `mundoAuxiliar`; nas ímpares ocorre o inverso. A cópia final é apenas efetuada se N for ímpar.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-500 border-t border-slate-800">
+        <p>&copy; 2026 Marco Ferreira. Projeto inserido na Licenciatura em Engenharia Biomédica e Biofísica - FCUL.</p>
+    </footer>
+
+    <!-- Scripts para animações -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+    </script>
+</body>
+</html>
