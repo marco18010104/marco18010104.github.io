@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matéria Mole em Tumores | Portfólio Marco Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800 sticky top-0">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+        </div>
+    </nav>
+
+    <header class="bg-slate-900 text-white py-20 px-6 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full">Licenciatura</span>
+                <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">A3S1</span>
+                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-3 py-1 rounded-full">Matéria Mole</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Matéria Mole aplicada a Tumores</h1>
+            <p class="text-xl text-slate-300 mb-8">Modelação biofísica da invasão tumoral e remodelação da Matriz Extracelular (ECM).</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="prose prose-slate prose-lg max-w-none">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">O Conceito de Matéria Mole</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                A matéria mole (polímeros, coloides, cristais líquidos) é caracterizada pela sua elevada deformabilidade. Nos tecidos biológicos, esta característica é fundamental: as células e a ECM funcionam como sistemas mesoscópicos onde pequenas interações intermoleculares ditam comportamentos complexos como a migração e invasão celular.
+            </p>
+
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">Dinâmica Tumoral e Wetting</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Aplicámos modelos de física de superfícies para descrever a progressão tumoral:
+            </p>
+            <ul class="list-disc pl-6 text-slate-700 space-y-3 mb-8">
+                <li><strong>Dewetting:</strong> Observámos a formação de gotas celulares isoladas em substratos rígidos, simulando a desagregação do tumor primário.</li>
+                <li><strong>Passive Wetting:</strong> Estudámos o *spreading* espontâneo de agregados celulares, utilizando a equação de Young-Dupré para minimizar a tensão superficial.</li>
+                <li><strong>Papel da EMT:</strong> A Transição Epitelial-Mesenquimal (EMT) atua como um fator que reduz a adesão celular (e-caderinas), promovendo a transição de um estado de *partial wetting* para *complete wetting*, facilitando assim a metástase.</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
