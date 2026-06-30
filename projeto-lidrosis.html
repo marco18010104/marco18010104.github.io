@@ -3,68 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LiDRoSIS | Portfólio Marco António Ferreira</title>
+    <title>LiDRoSIS | Portfólio Marco Ferreira</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <!-- NAVEGAÇÃO -->
-    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800">
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800 sticky top-0">
         <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Início</a>
+            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+            <a href="https://github.com/marco18010104/LiDRoSIS" target="_blank" class="text-slate-300 hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
         </div>
     </nav>
 
-    <!-- HEADER DO PROJETO -->
-    <header class="bg-white border-b border-slate-200 py-16 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-center gap-3 mb-4">
-                <span class="bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full">MATLAB</span>
-                <span class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full">Python</span>
-                <span class="bg-slate-100 text-slate-800 text-xs font-bold px-3 py-1 rounded-full">FCUL & IST</span>
+    <header class="bg-slate-900 border-b border-slate-800 py-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 20px 20px, #14b8a6 2px, transparent 0); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-white">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-3 py-1 rounded-full"><i class="fas fa-microscope mr-1"></i> Bioimagem & Visão Computacional</span>
+                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full"><i class="fas fa-laptop-code mr-1"></i> MATLAB & Python</span>
+                <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">CTN-IST & FCUL</span>
             </div>
-            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">LiDRoSIS</h1>
-            <p class="text-xl text-slate-600 mb-8">Lipid Droplet and ROS Segmentation and Inference System</p>
-            <a href="https://github.com/marco18010104/LiDRoSIS" target="_blank" class="inline-flex items-center bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-semibold shadow transition-colors">
-                <i class="fab fa-github mr-2 text-xl"></i> Ver Código no GitHub
-            </a>
+            
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-300">
+                LiDRoSIS Platform
+            </h1>
+            <p class="text-xl text-slate-300 mb-8 font-light leading-relaxed">
+                Lipid Droplet and ROS Segmentation and Inference System. Uma plataforma automatizada para processamento de imagens de microscopia de fluorescência e extração de métricas de radiobiologia celular.
+            </p>
+            
+            <div class="flex flex-wrap items-center gap-6 text-sm text-slate-400 border-t border-slate-700 pt-6">
+                <div class="flex items-center"><i class="fas fa-flask mr-2 text-teal-400"></i> Estágio de Licenciatura (2025)</div>
+                <div class="flex items-center"><i class="fas fa-user-graduate mr-2 text-teal-400"></i> Orientação: Dr.ª Ana Lúcia Belchior & Dr.ª Teresa Pinheiro</div>
+            </div>
         </div>
     </header>
 
-    <!-- CORPO DO PROJETO -->
     <main class="max-w-4xl mx-auto px-6 py-12">
-        <div class="prose prose-slate prose-lg max-w-none">
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">Sobre o Projeto</h2>
-            <p class="text-slate-700 leading-relaxed mb-6">
-                O LiDRoSIS é uma plataforma open-source desenvolvida em MATLAB e Python para a segmentação automática e análise quantitativa de gotículas lipídicas (LDs) e espécies reativas de oxigénio (ROS) em imagens de microscopia de fluorescência de células irradiadas com ou sem nanopartículas.
-            </p>
-            <p class="text-slate-700 leading-relaxed mb-8">
-                Foi desenvolvido durante um estágio de investigação focado na quantificação da resposta celular à radiação nas linhas celulares A549 e MCF7, numa colaboração entre o Campus Tecnológico Nuclear (IST) e a Faculdade de Ciências da Universidade de Lisboa (FCUL).
-            </p>
-
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">Funcionalidades Principais</h2>
-            <ul class="list-disc pl-6 text-slate-700 mb-8 space-y-2">
-                <li>Segmentação automática de LDs e ROS através de filtros morfológicos e baseados em intensidade.</li>
-                <li>Interfaces gráficas (GUIs) no MATLAB para segmentação interativa (<code>guiLD.m</code> e <code>guiROS.m</code>).</li>
-                <li>Quantificação célula a célula (área, intensidade, circularidade, colocalização).</li>
-                <li>Exportação de relatórios em Excel estruturados por Métricas Globais, do Núcleo e do Objeto.</li>
-                <li>Processamento em lote (Batch processing) para múltiplas imagens de microscopia.</li>
-                <li>Análise estatística e visualização em Python (<code>StatLysis.py</code>) incluindo boxplots, ANOVA e regressões.</li>
-            </ul>
-
-            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2">Arquitetura Técnica</h2>
-            <div class="bg-slate-50 rounded-lg p-6 border border-slate-200 mb-8">
-                <ul class="space-y-3 text-slate-700">
-                    <li><strong>MATLAB (R2022b+):</strong> Image Processing Toolbox. Responsável por todo o core de deteção, normalização de intensidade e extração de métricas.</li>
-                    <li><strong>Python (3.9+):</strong> Bibliotecas numpy, pandas, matplotlib, seaborn, scipy, statsmodels. Usado como script complementar para análise estatística avançada.</li>
-                </ul>
+        
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-teal-500 pb-2 inline-flex items-center">
+                <i class="fas fa-exclamation-circle text-teal-500 mr-3"></i> O Gargalo na Radiobiologia
+            </h2>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <p class="text-slate-700 leading-relaxed mb-4">
+                    Na investigação de terapias contra o cancro, o uso de Nanopartículas de Ouro (AuNPs) como radiossensibilizadores é uma área de ponta. Para avaliar a sua eficácia, os investigadores analisam a produção de Espécies Reativas de Oxigénio (ROS) e a acumulação de Gotículas Lipídicas (LDs) nas células após irradiação.
+                </p>
+                <div class="bg-teal-50 border-l-4 border-teal-500 p-4 rounded-r-lg text-slate-700">
+                    <strong>O Problema:</strong> A quantificação destas estruturas em imagens de microscopia de fluorescência é tradicionalmente manual (usando o ImageJ). É um processo subjetivo, propenso a erros humanos, não reprodutível e extremamente demorado quando se lidam com centenas de imagens de diferentes linhas celulares (A549, MCF7).
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-blue-500 pb-2 inline-flex items-center">
+                <i class="fas fa-cogs text-blue-500 mr-3"></i> Arquitetura do Software (LiDRoSIS)
+            </h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                O LiDRoSIS foi desenvolvido para ser um produto de software completo, distribuído como um <strong>Standalone Installer Package</strong>, libertando os biólogos da necessidade de saber programar. A plataforma está dividida em dois motores principais:
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 flex items-center mb-4 text-lg">
+                        <span class="bg-orange-100 text-orange-600 p-2 rounded-lg mr-3"><i class="fas fa-border-all"></i></span>
+                        Motor de Visão (MATLAB)
+                    </h3>
+                    <ul class="text-sm text-slate-600 space-y-3">
+                        <li><strong>Interface Gráfica (GUI):</strong> Painéis iterativos com overlays dinâmicos (LDRed, LDGreen, Coloc), terminal embutido e barra de progresso.</li>
+                        <li><strong>Segmentação Avançada:</strong> Implementação de <em>K-Means clustering</em>, limiarização de Otsu e Algoritmo de <em>Watershed</em> para separar núcleos celulares sobrepostos.</li>
+                        <li><strong>Processamento em Lote:</strong> Leitura recursiva de diretórios, extração de metadados dos nomes dos ficheiros e análise automatizada.</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-900 flex items-center mb-4 text-lg">
+                        <span class="bg-blue-100 text-blue-600 p-2 rounded-lg mr-3"><i class="fab fa-python"></i></span>
+                        Motor Estatístico (Python)
+                    </h3>
+                    <ul class="text-sm text-slate-600 space-y-3">
+                        <li><strong>Script <code>StatLysis.py</code>:</strong> Módulo acionado via terminal pelo MATLAB após a extração de dados.</li>
+                        <li><strong>Testes de Hipóteses:</strong> Realização automática de testes de normalidade (Shapiro-Wilk) seguidos de ANOVA ou Kruskal-Wallis (com post-hoc de Tukey/Dunn).</li>
+                        <li><strong>Visualização de Dados:</strong> Geração automática de gráficos de alta qualidade para publicações científicas (Violin plots, PCA, matrizes de correlação).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-emerald-500 pb-2 inline-flex items-center">
+                <i class="fas fa-project-diagram text-emerald-500 mr-3"></i> O Pipeline de Processamento
+            </h2>
+            
+            <div class="relative border-l-2 border-slate-200 ml-3 md:ml-6 space-y-8">
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute -left-3.5 md:-left-4 top-1 w-7 h-7 md:w-8 md:h-8 bg-emerald-500 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">1</div>
+                    <h4 class="font-bold text-slate-900 text-lg">Pré-Processamento & Correção</h4>
+                    <p class="text-sm text-slate-600 mt-2">Separação dos canais RGB (DAPI para núcleos, FITC para ROS/LDs verdes, TRITC para LDs vermelhos). Aplicação de filtros <em>Top-Hat</em> morfológicos para remover iluminação irregular e ruído de fundo.</p>
+                </div>
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute -left-3.5 md:-left-4 top-1 w-7 h-7 md:w-8 md:h-8 bg-emerald-500 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">2</div>
+                    <h4 class="font-bold text-slate-900 text-lg">Segmentação do Núcleo (DAPI)</h4>
+                    <p class="text-sm text-slate-600 mt-2">Uso do método de Otsu multinível aliado ao algoritmo de Watershed para identificar e separar núcleos de células adjacentes, criando as <em>Regiões de Interesse (ROIs)</em> individuais por célula.</p>
+                </div>
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute -left-3.5 md:-left-4 top-1 w-7 h-7 md:w-8 md:h-8 bg-emerald-500 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">3</div>
+                    <h4 class="font-bold text-slate-900 text-lg">Classificação LD e ROS (K-Means)</h4>
+                    <p class="text-sm text-slate-600 mt-2">Implementação de algoritmos <em>K-Means Clustering</em> para distinguir o sinal biológico verdadeiro de artefactos. O software separa espacialmente gotículas densas de marcações citoplasmáticas difusas.</p>
+                </div>
+                <div class="relative pl-8 md:pl-10">
+                    <div class="absolute -left-3.5 md:-left-4 top-1 w-7 h-7 md:w-8 md:h-8 bg-emerald-500 rounded-full border-4 border-white flex items-center justify-center text-white text-xs font-bold">4</div>
+                    <h4 class="font-bold text-slate-900 text-lg">Métricas e Colocalização</h4>
+                    <p class="text-sm text-slate-600 mt-2">Cálculo de características geométricas (área, perímetro, circularidade) e de intensidade célula-a-célula. Deteção espacial de colocalização entre canais via interseção booleana e coeficiente de Pearson.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 text-white rounded-2xl p-8 shadow-xl" data-aos="zoom-in">
+            <h2 class="text-2xl font-bold text-teal-400 mb-4"><i class="fas fa-vial mr-2"></i> Caso de Estudo: Aplicação em Radiobiologia</h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+                O LiDRoSIS foi validado processando dezenas de imagens in vitro do Campus Tecnológico Nuclear (CTN-IST), analisando os efeitos combinados de radiação X (2 Gy) e Nanopartículas de Ouro (AuNPs).
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                    <h4 class="font-bold text-slate-200 mb-2">Linhas Celulares Estudadas</h4>
+                    <p class="text-sm text-slate-400"><strong>A549:</strong> Carcinoma do pulmão não-pequenas células.<br><strong>MCF7:</strong> Cancro da mama positivo para recetores hormonais.</p>
+                </div>
+                <div class="bg-slate-800 p-4 rounded-lg border border-slate-700">
+                    <h4 class="font-bold text-slate-200 mb-2">Descobertas (Output do Software)</h4>
+                    <p class="text-sm text-slate-400">A análise estatística gerada pelo LiDRoSIS comprovou que a internalização de AuNPs irradiadas aumentou significativamente o stress oxidativo celular, originando uma maior produção de ROS e proliferação de Gotículas Lipídicas (LDs) associadas a apoptose.</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-400 mt-12">
-        <p>&copy; 2026 Marco António Ferreira. Projeto distribuído sob a Licença MIT.</p>
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-500 border-t border-slate-800">
+        <p>&copy; 2026 Marco Ferreira. Relatório e Software desenvolvidos no Instituto Superior Técnico e FCUL.</p>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+    </script>
 </body>
 </html>
