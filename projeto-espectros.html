@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espectros de Eletrões | Portfólio Marco Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800 sticky top-0">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+        </div>
+    </nav>
+
+    <header class="bg-slate-900 text-white py-20 px-6 border-b border-slate-700">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex flex-wrap gap-2 mb-4">
+                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full">Licenciatura</span>
+                <span class="bg-slate-700 text-slate-300 text-xs font-bold px-3 py-1 rounded-full">A3S2</span>
+                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-3 py-1 rounded-full">Física e Tecnologia das Radiações</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Espectros de Eletrões e Decaimento Beta</h1>
+            <p class="text-xl text-slate-300 mb-8 italic">Análise experimental de espectroscopia beta em fontes radioativas de Cobalto-60 e Césio-137.</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        <div class="prose prose-slate prose-lg max-w-none">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2"><i class="fas fa-atom text-teal-600 mr-2"></i> Objetivos</h2>
+            <p class="text-slate-700 leading-relaxed mb-6">
+                Este trabalho laboratorial teve como objetivo principal a caracterização dos espectros de energia de eletrões emitidos durante o decaimento beta das fontes de <sup>137</sup>Cs e <sup>60</sup>Co, utilizando um detetor de barreira de superfície de silício e um Analisador Multicanal (MCA).
+            </p>
+
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2"><i class="fas fa-tools text-teal-600 mr-2"></i> Metodologia</h2>
+            <ul class="list-disc pl-6 text-slate-700 space-y-2 mb-8">
+                <li><strong>Calibração em Energia:</strong> Utilização dos picos de Conversão Interna (CI) do <sup>137</sup>Cs para estabelecer a reta de calibração $E = m \cdot \text{Canal} + b$.</li>
+                <li><strong>Transformação de Fermi-Kurie:</strong> Aplicação desta técnica para linearizar a forma do espectro beta e determinar o <em>end-point</em> ($E_0$) das transições energéticas.</li>
+                <li><strong>Análise Espectral:</strong> Conversão de escalas lineares para logarítmicas para melhor visualização dos processos de decaimento beta negativo e gama.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b pb-2"><i class="fas fa-poll text-teal-600 mr-2"></i> Conclusões</h2>
+            <div class="bg-slate-100 p-6 rounded-xl border border-slate-200">
+                <p class="text-slate-700 leading-relaxed">
+                    O trabalho permitiu validar a relação entre a teoria quântica dos decaimentos beta e os dados experimentais. Identificámos limitações na deteção de eletrões de alta energia devido à espessura do detetor (500 µm), que resulta num deslocamento do espectro detetado face ao teórico. Demonstrámos também que a razão entre intensidades de CI das camadas K e L+M é um parâmetro discriminante importante para a identificação isotópica em Medicina Nuclear.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-400 mt-12">
+        <p>&copy; 2026 Marco Ferreira. Trabalho realizado com Filipa Cantante e Mariana Martins (FCUL).</p>
+    </footer>
+</body>
+</html>
