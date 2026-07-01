@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motherly Hand: Instrumentação Médica | Portfólio Marco Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="w-full bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-blue-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+        </div>
+    </nav>
+
+    <header class="bg-slate-900 border-b border-slate-800 py-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: repeating-radial-gradient(circle at 50% 50%, transparent 0, #3b82f6 1px, transparent 1px, transparent 100%); background-size: 40px 40px;"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-white">
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-3 py-1 rounded-full">Mestrado A1S2</span>
+                <span class="bg-slate-700 text-slate-300 border border-slate-600 text-xs font-bold px-3 py-1 rounded-full">Projeto e Instrumentação Médica</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-300">
+                Motherly Hand: Biofeedback Vibrotátil
+            </h1>
+            <p class="text-xl text-slate-300 mb-8 font-light leading-relaxed">
+                Sistema vestível de monitorização fisiológica em tempo real para mitigação de episódios de ansiedade pós-parto, utilizando biofeedback em <em>closed-loop</em>.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12">
+        
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-teal-500 pb-2 inline-flex items-center">
+                <i class="fas fa-heartbeat text-teal-500 mr-3"></i> O Sistema de Biofeedback
+            </h2>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <p class="text-slate-700 leading-relaxed">
+                    O Motherly Hand é uma plataforma integrada de <em>closed-loop biofeedback</em>. O dispositivo monitoriza a variabilidade da frequência cardíaca (HRV) e a atividade eletrodérmica (EDA) para detetar crises de ansiedade antes que estas escalem. Ao detetar um desvio fisiológico, o sistema ativa uma resposta vibrotátil no braço da utilizadora, promovendo a regulação autonómica através de estímulos táteis ritmados.
+                </p>
+            </div>
+        </section>
+
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl font-bold text-slate-900 mb-4 border-b-2 border-blue-500 pb-2 inline-flex items-center">
+                <i class="fas fa-microchip text-blue-500 mr-3"></i> Instrumentação e Inovação
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-slate-900 mb-3">Instrumentação (Hard & Soft)</h4>
+                    <p class="text-sm text-slate-600">Utilização da plataforma BITalino para aquisição multicanal. Pipeline em Python com filtragem digital (Butterworth, IIR Notch), análise de espectro (Welch) e deteção de picos em tempo real.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+                    <h4 class="font-bold text-slate-900 mb-3">Propriedade Intelectual</h4>
+                    <p class="text-sm text-slate-600">O projeto culminou na submissão de uma <strong>Comunicação de Invenção</strong> à FCUL, focada na inovação algorítmica da "Dupla Concordância Biológica" para eliminação de falsos positivos.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-slate-900 text-white rounded-2xl p-8 shadow-xl" data-aos="zoom-in">
+            <h2 class="text-2xl font-bold text-teal-400 mb-4"><i class="fas fa-check-double mr-2"></i> Impacto Clínico</h2>
+            <p class="text-slate-300 leading-relaxed">
+                Este dispositivo não é apenas um monitor; é uma ferramenta de intervenção terapêutica. A validação técnica provou que a ativação vibrotátil em <em>closed-loop</em> é capaz de "puxar" a fisiologia da utilizadora de volta à homeostase, criando uma ferramenta de apoio personalizada e não-estigmatizante para a saúde mental perinatal.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-500 border-t border-slate-800">
+        <p>&copy; 2026 Marco Ferreira. Projeto inserido no Mestrado em Engenharia Biomédica e Biofísica - FCUL.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+    </script>
+</body>
+</html>
