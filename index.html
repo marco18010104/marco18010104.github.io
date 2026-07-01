@@ -11,23 +11,21 @@
         section { scroll-margin-top: 100px; }
         .dropdown-menu { transition: all 0.3s ease-in-out; transform-origin: top; }
         .group:hover .dropdown-menu { opacity: 1; visibility: visible; transform: scaleY(1); }
-    
-        /* Tags Personalizadas */
-        .tag-base { @apply text-[10px] font-bold px-2 py-1 rounded; }
-        .tag-grau { @apply bg-slate-200 text-slate-800; }
-        .tag-semestre { @apply bg-zinc-200 text-zinc-800; }
         
-        /* Temas das Cadeiras */
-        .tag-ml { @apply bg-violet-100 text-violet-800; }
-        .tag-bioel { @apply bg-teal-100 text-teal-800; }
-        .tag-rad { @apply bg-pink-100 text-pink-800; }
-        .tag-dm { @apply bg-rose-100 text-rose-800; }
-        .tag-msm { @apply bg-sky-100 text-sky-800; }
-        .tag-emp { @apply bg-fuchsia-100 text-fuchsia-800; }
-        .tag-prog { @apply bg-cyan-100 text-cyan-800; }
-        .tag-ieb { @apply bg-orange-100 text-orange-800; }
-        .tag-fisica { @apply bg-emerald-100 text-emerald-800; }
-        .tag-pim { @apply bg-red-100 text-red-800; }
+        /* Tags simplificadas e robustas */
+        .tag { display: inline-flex; align-items: center; font-size: 0.65rem; font-weight: 700; padding: 0.25rem 0.5rem; border-radius: 0.375rem; text-transform: uppercase; }
+        .t-grau { background: #e2e8f0; color: #1e293b; } /* Slate */
+        .t-semestre { background: #e4e4e7; color: #3f3f46; } /* Zinc */
+        .t-ml { background: #ede9fe; color: #5b21b6; }
+        .t-bioel { background: #ccfbf1; color: #115e59; }
+        .t-rad { background: #fce7f3; color: #9d174d; }
+        .t-dm { background: #ffe4e6; color: #9f1239; }
+        .t-msm { background: #e0f2fe; color: #0369a1; }
+        .t-emp { background: #fae8ff; color: #86198f; }
+        .t-prog { background: #cffafe; color: #155e75; }
+        .t-ieb { background: #ffedd5; color: #9a3412; }
+        .t-fisica { background: #d1fae5; color: #065f46; }
+        .t-pim { background: #fee2e2; color: #991b1b; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
@@ -109,7 +107,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag t-gra">Mestrado</span>
                             <span class="tag-base tag-semestre">A1S1</span>
                             <span class="tag-base tag-ml">Machine Learning</span>
                         </div>
@@ -123,7 +121,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col hover:shadow-xl transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag t-gra">Mestrado</span>
                             <span class="tag-base tag-semestre">A1S1</span>
                             <span class="tag-base tag-bioel">Bioeletricidade e Eletrofisiologia</span>                        
                         </div>
@@ -137,7 +135,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag t-gra">Mestrado</span>
                             <span class="tag-base tag-semestre">A1S1</span>
                             <span class="tag-base tag-rad">Diagnóstico e Terapia com Radiação e Protões</span>
                         </div>
@@ -151,7 +149,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="300">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag t-gra">Mestrado</span>
                             <span class="tag-base tag-semestre">A1S1/A1S2</span>
                             <span class="tag-base tag-dm">Dispositivos Médicos I</span>
                             <span class="tag-base tag-dm">Dispositivos Médicos II</span>
@@ -166,7 +164,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                           <span class="tag-base tag-grau">Mestrado</span>
+                           <span class="tag t-gra">Mestrado</span>
                            <span class="tag-base tag-semestre">A1S2</span>
                            <span class="tag-base tag-dm">Dispositivos Médicos II</span>
                         </div>
@@ -181,7 +179,7 @@
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
                             <div class="flex flex-wrap gap-2 mb-3">
-                                <span class="tag-base tag-grau">Mestrado</span>
+                                <span class="tag t-gra">Mestrado</span>
                                 <span class="tag-base tag-semestre">A1S2</span>
                                 <span class="tag-base tag-msm">Modelação e Simulação em Medicina</span>
                             </div>
@@ -195,7 +193,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="200">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag t-gra">Mestrado</span>
                             <span class="tag-base tag-semestre">A1S2</span>
                             <span class="tag-base tag-emp">Mindset Empreendedor</span>
                         </div>
@@ -209,7 +207,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="500">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag t-gra">Mestrado</span>
                             <span class="tag-base tag-semestre">A1S2</span>
                             <span class="tag-base tag-pim">Projeto de Instrumentação Médica</span>
                         </div>
@@ -237,7 +235,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag t-gra">Licenciatura</span>
                             <span class="tag-base tag-semestre">A3S2</span>
                             <span class="tag-base tag-dm">Estágio Curricular</span>
                         </div>
@@ -251,7 +249,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag t-gra">Licenciatura</span>
                             <span class="tag-base tag-semestre">A1S1</span>
                             <span class="tag-base tag-prog">Programção</span>
                         </div>
@@ -265,7 +263,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag t-gra">Licenciatura</span>
                             <span class="tag-base tag-semestre">A1S2</span>
                             <span class="tag-base tag-ieb">IEB</span>
                         </div>
@@ -279,7 +277,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag t-gra">Licenciatura</span>
                             <span class="tag-base tag-semestre">A2S1</span>
                             <span class="tag-base tag-ieb">Lab. EBB e Física Médica</span>
                         </div>
@@ -294,7 +292,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="300">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag t-gra">Licenciatura</span>
                             <span class="tag-base tag-semestre">A3S1</span>
                             <span class="tag-base tag-fisica">Tópicos de Física e Engenharia</span>
                         </div>
@@ -308,7 +306,7 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="300">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag t-gra">Licenciatura</span>
                             <span class="tag-base tag-semestre">A3S2</span>
                             <span class="tag-base tag-fisica">Física e Tecnologia das Radiações</span>
                         </div>
