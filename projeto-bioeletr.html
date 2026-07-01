@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <title>Bioeletricidade e Eletrofisiologia | Portfólio Marco Ferreira</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <nav class="w-full bg-slate-900 text-white sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-6 py-4">
+            <a href="index.html" class="text-teal-400 hover:text-white"><i class="fas fa-arrow-left mr-2"></i>Voltar</a>
+        </div>
+    </nav>
+
+    <header class="bg-slate-900 text-white py-16 px-6 border-b border-slate-700">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl font-extrabold mb-4">Simulação Computacional da Génese e Propagação de Potenciais de Ação</h1>
+            <p class="text-lg text-slate-300">Análise do modelo de Hodgkin-Huxley e curvas de excitabilidade em axónios.</p>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-6 py-12 prose prose-slate">
+        <h2>Visão Geral</h2>
+        <p>Projeto realizado no âmbito da cadeira de <strong>Bioeletricidade e Eletrofisiologia (2025/26)</strong>. O foco foi a implementação computacional do modelo de Hodgkin-Huxley para caracterizar propriedades de excitabilidade, latências de disparo e propagação do impulso nervoso em fibras amielínicas[cite: 44].</p>
+
+        <h2>Principais Desafios Técnicos</h2>
+        <ul>
+            <li><strong>Determinação de Limiares:</strong> Algoritmos iterativos em MATLAB para encontrar o limiar de ativação anódico ($J_{th}^+ \approx 7.2 \, \mu A/cm^2$) e catódico ($J_{th}^- \approx -20.1 \, \mu A/cm^2$)[cite: 44].</li>
+            <li><strong>Anode Break Excitation:</strong> Análise biofísica da despolarização após a cessação de estímulos hiperpolarizantes, demonstrando a recuperação assimétrica das variáveis de gating ($n, m, h$)[cite: 44].</li>
+            <li><strong>Leis de Escala (Lei de $a^{3/2}$):</strong> Validação experimental e teórica da relação entre o raio da fibra e a corrente limiar, e a lei $\theta \propto \sqrt{a}$ para a velocidade de propagação[cite: 44].</li>
+            <li><strong>Estabilidade Numérica:</strong> Implementação da Equação do Cabo via esquema de <em>Crank-Nicolson</em>, garantindo a estabilidade através do ajuste rigoroso do <em>Mesh Ratio</em>[cite: 44].</li>
+        </ul>
+
+        <h2>Resultados</h2>
+        <p>Conseguimos validar com elevada precisão ($\epsilon < 0.5\%$) a dependência da velocidade de condução com o raio da fibra, confirmando que o aumento do calibre axonal reduz a resistência axial mais rapidamente do que aumenta a carga capacitiva, facilitando a propagação do AP[cite: 44].</p>
+    </main>
+</body>
+</html>
