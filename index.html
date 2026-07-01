@@ -9,9 +9,25 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         section { scroll-margin-top: 100px; }
-        /* Suavizar o dropdown */
         .dropdown-menu { transition: all 0.3s ease-in-out; transform-origin: top; }
         .group:hover .dropdown-menu { opacity: 1; visibility: visible; transform: scaleY(1); }
+    
+        /* Tags Personalizadas */
+        .tag-base { @apply text-[10px] font-bold px-2 py-1 rounded; }
+        .tag-grau { @apply bg-slate-200 text-slate-800; }
+        .tag-semestre { @apply bg-zinc-200 text-zinc-800; }
+        
+        /* Temas das Cadeiras */
+        .tag-ml { @apply bg-violet-100 text-violet-800; }
+        .tag-bioel { @apply bg-teal-100 text-teal-800; }
+        .tag-rad { @apply bg-pink-100 text-pink-800; }
+        .tag-dm { @apply bg-rose-100 text-rose-800; }
+        .tag-msm { @apply bg-sky-100 text-sky-800; }
+        .tag-emp { @apply bg-fuchsia-100 text-fuchsia-800; }
+        .tag-prog { @apply bg-cyan-100 text-cyan-800; }
+        .tag-ieb { @apply bg-orange-100 text-orange-800; }
+        .tag-fisica { @apply bg-emerald-100 text-emerald-800; }
+        .tag-pim { @apply bg-red-100 text-red-800; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
@@ -93,9 +109,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-indigo-100 text-indigo-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S1</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-violet-100 text-violet-800 rounded">Machine Learning</span>
+                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag-base tag-semestre">A1S1</span>
+                            <span class="tag-base tag-ml">Machine Learning</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Learning About Donations</h3>
                         <p class="text-slate-600 text-sm mb-4">Pipeline em Python (XGBoost, Scikit-Learn) para tratamento de dados, feature engineering, classificação de doadores e algoritmos de clustering não-supervisionado.</p>
@@ -107,9 +123,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col hover:shadow-xl transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-indigo-100 text-indigo-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S1</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-teal-100 text-teal-800 rounded">Bioeletricidade e Eletrofisiologia</span>
+                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag-base tag-semestre">A1S1</span>
+                            <span class="tag-base tag-bioel">Bioeletricidade e Eletrofisiologia</span>                        
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Simulação do Modelo Hodgkin-Huxley</h3>
                         <p class="text-slate-600 text-sm mb-4">Modelação da propagação de potenciais de ação via Equação do Cabo (Crank-Nicolson) e validação de leis de escala física em axónios.</p>
@@ -121,9 +137,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-purple-100 text-purple-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S1</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-pink-100 text-pink-800 rounded">Diagnóstico e Terapia com Radiação e Protões</span>
+                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag-base tag-semestre">A1S1</span>
+                            <span class="tag-base tag-rad">Diagnóstico e Terapia com Radiação e Protões</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Integração PET no matRad</h3>
                         <p class="text-slate-600 text-sm mb-4">Módulo para análise de heterogeneidade tumoral em imagens PET (pt/pst) e suporte ao planeamento em radioterapia por protões.</p>
@@ -135,10 +151,10 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="300">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-indigo-100 text-indigo-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S1/A1S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-rose-100 text-rose-800 rounded">Dispositivos Médicos I</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-rose-100 text-rose-800 rounded">Dispositivos Médicos II</span>
+                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag-base tag-semestre">A1S1/A1S2</span>
+                            <span class="tag-base tag-dm">Dispositivos Médicos I</span>
+                            <span class="tag-base tag-dm">Dispositivos Médicos II</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">VIGIIL-6 (Caquexia)</h3>
                         <p class="text-slate-600 text-sm mb-4">Projeto completo (protótipo e plano de negócio) para deteção precoce de caquexia oncológica. Integra sensores biomédicos, análise de risco ISO 14971 e interoperabilidade HL7.</p>
@@ -150,9 +166,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-purple-100 text-purple-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-indigo-100 text-indigo-800 rounded">Dispositivos Médicos II</span>
+                           <span class="tag-base tag-grau">Mestrado</span>
+                           <span class="tag-base tag-semestre">A1S2</span>
+                           <span class="tag-base tag-dm">Dispositivos Médicos II</span>
                         </div>
                         <h3 class="text-xl font-semibold text-slate-900 mb-2">App Árvore de Falhas (FTA)</h3>
                         <p class="text-slate-600 text-sm mb-4">Aplicação gráfica online para desenho, modelação estrutural e análise de risco usando Árvores de Falhas (FTA).</p>
@@ -164,10 +180,11 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="400">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-purple-100 text-purple-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">Modelação e Simulação em Medicina</span>
-                        </div>
+                            <div class="flex flex-wrap gap-2 mb-3">
+                                <span class="tag-base tag-grau">Mestrado</span>
+                                <span class="tag-base tag-semestre">A1S2</span>
+                                <span class="tag-base tag-msm">Modelação e Simulação em Medicina</span>
+                            </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Modelo compartimental de um paper</h3>
                         <p class="text-slate-600 text-sm mb-4">Framework em Python para modelação compartimental 5K de metabolização de glicose muscular. Inclui otimização numérica e Monte Carlo para validação.</p>
                     </div>
@@ -178,9 +195,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="200">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-purple-100 text-purple-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-fuchsia-100 text-fuchsia-800 rounded">Mindset Empreendedor</span>
+                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag-base tag-semestre">A1S2</span>
+                            <span class="tag-base tag-emp">Mindset Empreendedor</span>
                         </div>
                         <h3 class="text-xl font-semibold text-slate-900 mb-2">App Hypothesis Map</h3>
                         <p class="text-slate-600 text-sm mb-4">Software interativo "live" para preenchimento digital, planeamento e validação de ideias de negócio e investigação.</p>
@@ -192,9 +209,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="500">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-indigo-100 text-indigo-800 rounded">Mestrado</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-teal-100 text-teal-800 rounded">Projeto de Instrumentação Médica</span>
+                            <span class="tag-base tag-grau">Mestrado</span>
+                            <span class="tag-base tag-semestre">A1S2</span>
+                            <span class="tag-base tag-pim">Projeto de Instrumentação Médica</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Motherly Hand</h3>
                         <p class="text-slate-600 text-sm mb-4">Dispositivo vestível de biofeedback para depressão pós-parto. Inclui processamento de sinal em Python, sensores EDA/ECG e Comunicação de Invenção submetida.</p>
@@ -220,9 +237,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-blue-100 text-blue-800 rounded">Licenciatura</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A3S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-teal-100 text-teal-800 rounded">Estágio</span>
+                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag-base tag-semestre">A3S2</span>
+                            <span class="tag-base tag-dm">Estágio Curricular</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">LiDRoSIS (IST & FCUL)</h3>
                         <p class="text-slate-600 text-sm mb-4">Plataforma open-source MATLAB/Python para segmentação e análise de gotículas lipídicas e ROS em células irradiadas.</p>
@@ -234,9 +251,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-blue-100 text-blue-800 rounded">Licenciatura</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S1</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-cyan-100 text-cyan-800 rounded">Programação</span>
+                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag-base tag-semestre">A1S1</span>
+                            <span class="tag-base tag-prog">Programção</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">O Jogo da Vida</h3>
                         <p class="text-slate-600 text-sm mb-4">Implementação em C do famoso autómato celular de John Conway. Atualização síncrona do "mundo" usando matrizes bi-dimensionais e simulação por gerações sucessivas.</p>
@@ -248,9 +265,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-blue-100 text-blue-800 rounded">Licenciatura</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A1S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-rose-100 text-rose-800 rounded">IEB</span>
+                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag-base tag-semestre">A1S2</span>
+                            <span class="tag-base tag-ieb">IEB</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Nanocarriers e Glioblastoma</h3>
                         <p class="text-slate-600 text-sm mb-4">Investigação sobre métodos de entrega de fármacos (nanocarriers) e aplicação de modelos QSAR/Machine Learning para superar a BHE.</p>
@@ -262,9 +279,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="100">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-blue-100 text-blue-800 rounded">Licenciatura</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A2S1</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-teal-100 text-teal-800 rounded">Lab. Eng. Biomédica</span>
+                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag-base tag-semestre">A2S1</span>
+                            <span class="tag-base tag-ieb">Lab. EBB e Física Médica</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Efeitos da Música na Concentração</h3>
                         <p class="text-slate-600 text-sm mb-4">Utilização do BIOPAC PRO para aquisição de sinais EEG (Ondas Alfa/Beta/Delta) e ECG para medir o impacto de estímulos auditivos no foco cognitivo.</p>
@@ -277,9 +294,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="300">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-blue-100 text-blue-800 rounded">Licenciatura</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A3S1</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-emerald-100 text-emerald-800 rounded">Matéria Mole</span>
+                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag-base tag-semestre">A3S1</span>
+                            <span class="tag-base tag-fisica">Tópicos de Física e Engenharia</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Matéria Mole em Tumores</h3>
                         <p class="text-slate-600 text-sm mb-4">Aplicação de modelos de física de superfícies (wetting/dewetting) para descrever a mecânica de invasão tumoral e o papel da EMT na metástase.</p>
@@ -291,9 +308,9 @@
                 <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 flex flex-col justify-between hover:shadow-xl hover:-translate-y-1 transition-all" data-aos="fade-up" data-delay="300">
                     <div>
                         <div class="flex flex-wrap gap-2 mb-3">
-                            <span class="text-[10px] font-bold px-2 py-1 bg-blue-100 text-blue-800 rounded">Licenciatura</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-slate-100 text-slate-800 rounded">A3S2</span>
-                            <span class="text-[10px] font-bold px-2 py-1 bg-emerald-100 text-emerald-800 rounded">Física Médica</span>
+                            <span class="tag-base tag-grau">Licenciatura</span>
+                            <span class="tag-base tag-semestre">A3S2</span>
+                            <span class="tag-base tag-fisica">Física e Tecnologia das Radiações</span>
                         </div>
                         <h3 class="text-xl font-bold text-slate-900 mb-2">Espectros de Eletrões</h3>
                         <p class="text-slate-600 text-sm mb-4">Estudo experimental do decaimento beta das fontes de Cobalto-60 e Césio-137 através da análise de curvas de Fermi-Kurie e calibração por Conversão Interna.</p>
