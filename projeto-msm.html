@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <title>Cinética [18F]FDG | Portfólio Marco Ferreira</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
+
+    <nav class="w-full bg-slate-900 text-white sticky top-0 z-50 border-b border-slate-800">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-blue-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+        </div>
+    </nav>
+
+    <header class="bg-blue-950 text-white py-20 px-6 border-b border-blue-900">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">Mestrado A1S1 & A1S2</span>
+                <span class="bg-teal-500/20 text-teal-300 border border-teal-400/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest">Modelação e Simulação</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6">Modelação Cinética do [18F]FDG</h1>
+            <p class="text-xl text-blue-100 max-w-3xl leading-relaxed">Da formulação matemática à simulação de estados fisiopatológicos no músculo esquelético, utilizando modelos compartimentais (5K) e otimização numérica.</p>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-6 py-16">
+        <article class="prose prose-slate prose-lg max-w-none">
+            
+            <section class="mb-16">
+                <h2 class="text-blue-900"><i class="fas fa-calculator mr-3"></i> O Problema Matemático</h2>
+                <p>O desafio consistiu em extrair micro-parâmetros biológicos (perfusão, transporte transmembranar e fosforilação) a partir de um sinal PET global e ruidoso. Em vez do modelo 3K simplificado (usado originalmente para o cérebro), implementámos o <strong>modelo de 5 constantes de taxa (5K)</strong>, que segrega os espaços extracelular e intracelular, permitindo uma descrição rigorosa do transporte de glucose muscular.</p>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-blue-900"><i class="fas fa-code mr-3"></i> Implementação Computacional</h2>
+                <div class="grid md:grid-cols-2 gap-8 not-prose">
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-blue-900">Integração Numérica</h4>
+                        <p class="text-sm text-slate-600">Sistema de EDOs resolvido via algoritmo <strong>Runge-Kutta de 4ª ordem</strong>. A densidade temporal de 1201 pontos permitiu modelar com precisão a fase inicial de <em>wash-in</em>, onde o ruído de Poisson é dominante.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                        <h4 class="font-bold text-blue-900">Problema Inverso</h4>
+                        <p class="text-sm text-slate-600">Otimização através de <em>Trust Region Reflective (TRF)</em> para respeitar restrições físicas (parâmetros > 0), garantindo que os resultados se mantêm biologicamente plausíveis.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mb-16">
+                <h2 class="text-blue-900"><i class="fas fa-chart-pie mr-3"></i> Validação e Resultados</h2>
+                <p>Realizámos testes de robustez cruciais para validar o modelo:</p>
+                <ul class="space-y-4">
+                    <li><strong>Análise AIC (Akaike Information Criterion):</strong> A preferência pelo modelo 5K face ao 3K foi confirmada por um ΔAIC massivo (>1200), justificando a necessidade de separar os compartimentos intracelulares.</li>
+                    <li><strong>Monte Carlo (N=100):</strong> Avaliação da identificabilidade prática sob ruído de Poisson. Os coeficientes de variação (CV%) reduzidos (ex: 2.5% em K1) confirmam a estabilidade das estimativas.</li>
+                    <li><strong>Simulações Fisiopatológicas:</strong> O motor de simulação replicou com sucesso estados de Diabetes Tipo 2 (resistência à insulina) e o Efeito Warburg em tumores, validando a capacidade diagnóstica preditiva da ferramenta.</li>
+                </ul>
+            </section>
+
+            <div class="bg-slate-900 text-white p-8 rounded-2xl shadow-xl">
+                <h3 class="text-blue-400 font-bold mb-4">Conclusão Técnica</h3>
+                <p class="text-slate-300">Este projeto transformou um conceito teórico de farmacocinética num motor de simulação preditiva. A capacidade de separar os passos de transporte e fosforilação é a chave para distinguir disfunções metabólicas precoces (caquexia/diabetes) que modelos simples falham em identificar.</p>
+            </div>
+        </article>
+    </main>
+</body>
+</html>
