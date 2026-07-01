@@ -2,48 +2,85 @@
 <html lang="pt" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <title>Bioeletricidade e Eletrofisiologia | Portfólio Marco Ferreira</title>
+    <title>Bioeletricidade | Portfólio Marco Ferreira</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: { extend: {} }
-        }
-    </script>
-    <script src="https://unpkg.com/@tailwindcss/typography@0.4.0/dist/typography.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-<body class="bg-slate-50 text-slate-800 font-sans">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased">
 
-    <nav class="w-full bg-slate-900 text-white sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-6 py-4">
-            <a href="index.html" class="text-teal-400 hover:text-white font-bold"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
+    <nav class="w-full bg-slate-900 text-white z-50 border-b border-slate-800 sticky top-0">
+        <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="font-bold text-teal-400 hover:text-white transition-colors"><i class="fas fa-arrow-left mr-2"></i>Voltar ao Portfólio</a>
         </div>
     </nav>
 
-    <header class="bg-slate-900 text-white py-16 px-6 border-b border-slate-700">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-4xl font-extrabold mb-4">Simulação Computacional da Génese e Propagação de Potenciais de Ação</h1>
-            <p class="text-lg text-slate-300">Análise do modelo de Hodgkin-Huxley e curvas de excitabilidade em axónios.</p>
+    <header class="bg-slate-900 border-b border-slate-800 py-20 px-6 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 50% 50%, #14b8a6 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="max-w-4xl mx-auto relative z-10 text-white">
+            <div class="flex flex-wrap gap-3 mb-6">
+                <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-bold px-3 py-1 rounded-full"><i class="fas fa-microchip mr-1"></i> Biofísica Computacional</span>
+                <span class="bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold px-3 py-1 rounded-full"><i class="fas fa-code mr-1"></i> MATLAB</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-300">
+                Génese e Propagação de Potenciais de Ação
+            </h1>
+            <p class="text-xl text-slate-300 mb-8 font-light">Simulação computacional do modelo de Hodgkin-Huxley e análise de excitabilidade axonal.</p>
         </div>
     </header>
 
     <main class="max-w-4xl mx-auto px-6 py-12">
-    <!-- Envolvemos todo o texto numa div que define a tipografia e o espaçamento -->
-    <div class="prose prose-slate prose-lg max-w-none">
         
-        <h2>Visão Geral</h2>
-        <p>Projeto realizado no âmbito da cadeira de <strong>Bioeletricidade e Eletrofisiologia (2025/26)</strong>. O foco foi a implementação computacional do modelo de Hodgkin-Huxley para caracterizar propriedades de excitabilidade, latências de disparo e propagação do impulso nervoso em fibras amielínicas.</p>
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-teal-500 pb-2 inline-flex items-center">
+                <i class="fas fa-info-circle text-teal-500 mr-3"></i> Contexto do Projeto
+            </h2>
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <p class="text-slate-700 leading-relaxed">
+                    Projeto desenvolvido no âmbito da cadeira de <strong>Bioeletricidade e Eletrofisiologia (2025/26)</strong>. O foco central foi a modelação matemática dos canais iónicos de Hodgkin-Huxley para caracterizar propriedades de excitabilidade, latências de disparo e a propagação do impulso nervoso em fibras amielínicas.
+                </p>
+            </div>
+        </section>
 
-        <h2>Principais Desafios Técnicos</h2>
-        <ul>
-            <li><strong>Determinação de Limiares:</strong> Algoritmos iterativos em MATLAB para encontrar o limiar de ativação anódico (J+th ≈ 7.2 µA/cm²) e catódico (J-th ≈ -20.1 µA/cm²).</li>
-            <li><strong>Anode Break Excitation:</strong> Análise biofísica da despolarização após a cessação de estímulos hiperpolarizantes, demonstrando a recuperação assimétrica das variáveis de gating (n, m, h).</li>
-            <li><strong>Leis de Escala (Lei de a^(3/2)):</strong> Validação experimental e teórica da relação entre o raio da fibra e a corrente limiar, e a lei θ ∝ √a para a velocidade de propagação.</li>
-            <li><strong>Estabilidade Numérica:</strong> Implementação da Equação do Cabo via esquema de <em>Crank-Nicolson</em>, garantindo a estabilidade através do ajuste rigoroso do <em>Mesh Ratio</em>.</li>
-        </ul>
+        <section class="mb-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6 border-b-2 border-blue-500 pb-2 inline-flex items-center">
+                <i class="fas fa-cogs text-blue-500 mr-3"></i> Desafios Técnicos
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-blue-600 mb-2">Análise de Limiares</h3>
+                    <p class="text-sm text-slate-600">Algoritmos iterativos em MATLAB para encontrar limiares de ativação anódico (7.2 µA/cm²) e catódico (-20.1 µA/cm²).</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-blue-600 mb-2">Anode Break Excitation</h3>
+                    <p class="text-sm text-slate-600">Estudo da despolarização pós-hiperpolarização, observando a recuperação assimétrica das variáveis de gating (n, m, h).</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-blue-600 mb-2">Leis de Escala</h3>
+                    <p class="text-sm text-slate-600">Validação da relação entre raio da fibra e corrente limiar, e a lei de propagação θ ∝ √a.</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-blue-600 mb-2">Estabilidade Numérica</h3>
+                    <p class="text-sm text-slate-600">Implementação da Equação do Cabo via <em>Crank-Nicolson</em>, garantindo convergência através do ajuste do <em>Mesh Ratio</em>.</p>
+                </div>
+            </div>
+        </section>
 
-        <h2>Resultados</h2>
-        <p>Conseguimos validar com elevada precisão (erro < 0.5%) a dependência da velocidade de condução com o raio da fibra, confirmando que o aumento do calibre axonal reduz a resistência axial mais rapidamente do que aumenta a carga capacitiva, facilitando a propagação do PA.</p>
+        <section class="bg-slate-900 text-white rounded-2xl p-8 shadow-xl">
+            <h2 class="text-2xl font-bold text-teal-400 mb-4"><i class="fas fa-chart-line mr-2"></i> Conclusão dos Resultados</h2>
+            <p class="text-slate-300 leading-relaxed">
+                Validámos a dependência da velocidade de condução com o raio da fibra com um erro inferior a 0.5%. Confirmámos que o aumento do calibre axonal reduz a resistência axial mais rapidamente do que aumenta a carga capacitiva, facilitando a propagação do Potencial de Ação (PA).
+            </p>
+        </section>
+
     </main>
+
+    <footer class="bg-slate-900 py-8 text-center text-sm text-slate-500 border-t border-slate-800">
+        <p>&copy; 2026 Marco Ferreira. Mestrado em Eng. Biomédica e Biofísica - FCUL.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
